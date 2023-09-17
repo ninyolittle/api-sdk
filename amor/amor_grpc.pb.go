@@ -24,7 +24,6 @@ const (
 	ProjectAmor_DeleteUser_FullMethodName   = "/ProjectAmor/DeleteUser"
 	ProjectAmor_UpdateUser_FullMethodName   = "/ProjectAmor/UpdateUser"
 	ProjectAmor_GetUser_FullMethodName      = "/ProjectAmor/GetUser"
-	ProjectAmor_LoginUser_FullMethodName    = "/ProjectAmor/LoginUser"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -35,7 +34,6 @@ type ProjectAmorClient interface {
 	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
-	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 }
 
 type projectAmorClient struct {
@@ -82,15 +80,6 @@ func (c *projectAmorClient) GetUser(ctx context.Context, in *GetUserRequest, opt
 	return out, nil
 }
 
-func (c *projectAmorClient) LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error) {
-	out := new(LoginUserResponse)
-	err := c.cc.Invoke(ctx, ProjectAmor_LoginUser_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -99,7 +88,6 @@ type ProjectAmorServer interface {
 	DeleteUser(context.Context, *DeleteUserRequest) (*empty.Empty, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*empty.Empty, error)
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
-	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -118,9 +106,6 @@ func (UnimplementedProjectAmorServer) UpdateUser(context.Context, *UpdateUserReq
 }
 func (UnimplementedProjectAmorServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
-}
-func (UnimplementedProjectAmorServer) LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LoginUser not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -207,24 +192,6 @@ func _ProjectAmor_GetUser_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectAmor_LoginUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoginUserRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ProjectAmorServer).LoginUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ProjectAmor_LoginUser_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectAmorServer).LoginUser(ctx, req.(*LoginUserRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -247,10 +214,6 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _ProjectAmor_GetUser_Handler,
-		},
-		{
-			MethodName: "LoginUser",
-			Handler:    _ProjectAmor_LoginUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
