@@ -20,20 +20,20 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ProjectAmor_RegisterUser_FullMethodName = "/ProjectAmor/RegisterUser"
-	ProjectAmor_DeleteUser_FullMethodName   = "/ProjectAmor/DeleteUser"
-	ProjectAmor_UpdateUser_FullMethodName   = "/ProjectAmor/UpdateUser"
-	ProjectAmor_GetUser_FullMethodName      = "/ProjectAmor/GetUser"
+	ProjectAmor_AddHome_FullMethodName    = "/ProjectAmor/AddHome"
+	ProjectAmor_DeleteHome_FullMethodName = "/ProjectAmor/DeleteHome"
+	ProjectAmor_UpdateHome_FullMethodName = "/ProjectAmor/UpdateHome"
+	ProjectAmor_GetHome_FullMethodName    = "/ProjectAmor/GetHome"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ProjectAmorClient interface {
-	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
-	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	AddHome(ctx context.Context, in *AddHomeRequest, opts ...grpc.CallOption) (*AddHomeResponse, error)
+	DeleteHome(ctx context.Context, in *DeleteHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	UpdateHome(ctx context.Context, in *UpdateHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error)
 }
 
 type projectAmorClient struct {
@@ -44,36 +44,36 @@ func NewProjectAmorClient(cc grpc.ClientConnInterface) ProjectAmorClient {
 	return &projectAmorClient{cc}
 }
 
-func (c *projectAmorClient) RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error) {
-	out := new(RegisterUserResponse)
-	err := c.cc.Invoke(ctx, ProjectAmor_RegisterUser_FullMethodName, in, out, opts...)
+func (c *projectAmorClient) AddHome(ctx context.Context, in *AddHomeRequest, opts ...grpc.CallOption) (*AddHomeResponse, error) {
+	out := new(AddHomeResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_AddHome_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *projectAmorClient) DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *projectAmorClient) DeleteHome(ctx context.Context, in *DeleteHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, ProjectAmor_DeleteUser_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ProjectAmor_DeleteHome_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *projectAmorClient) UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *projectAmorClient) UpdateHome(ctx context.Context, in *UpdateHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, ProjectAmor_UpdateUser_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, ProjectAmor_UpdateHome_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *projectAmorClient) GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error) {
-	out := new(GetUserResponse)
-	err := c.cc.Invoke(ctx, ProjectAmor_GetUser_FullMethodName, in, out, opts...)
+func (c *projectAmorClient) GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error) {
+	out := new(GetHomeResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_GetHome_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -84,10 +84,10 @@ func (c *projectAmorClient) GetUser(ctx context.Context, in *GetUserRequest, opt
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
 type ProjectAmorServer interface {
-	RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error)
-	DeleteUser(context.Context, *DeleteUserRequest) (*empty.Empty, error)
-	UpdateUser(context.Context, *UpdateUserRequest) (*empty.Empty, error)
-	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	AddHome(context.Context, *AddHomeRequest) (*AddHomeResponse, error)
+	DeleteHome(context.Context, *DeleteHomeRequest) (*empty.Empty, error)
+	UpdateHome(context.Context, *UpdateHomeRequest) (*empty.Empty, error)
+	GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -95,17 +95,17 @@ type ProjectAmorServer interface {
 type UnimplementedProjectAmorServer struct {
 }
 
-func (UnimplementedProjectAmorServer) RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterUser not implemented")
+func (UnimplementedProjectAmorServer) AddHome(context.Context, *AddHomeRequest) (*AddHomeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddHome not implemented")
 }
-func (UnimplementedProjectAmorServer) DeleteUser(context.Context, *DeleteUserRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+func (UnimplementedProjectAmorServer) DeleteHome(context.Context, *DeleteHomeRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteHome not implemented")
 }
-func (UnimplementedProjectAmorServer) UpdateUser(context.Context, *UpdateUserRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+func (UnimplementedProjectAmorServer) UpdateHome(context.Context, *UpdateHomeRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateHome not implemented")
 }
-func (UnimplementedProjectAmorServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+func (UnimplementedProjectAmorServer) GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHome not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -120,74 +120,74 @@ func RegisterProjectAmorServer(s grpc.ServiceRegistrar, srv ProjectAmorServer) {
 	s.RegisterService(&ProjectAmor_ServiceDesc, srv)
 }
 
-func _ProjectAmor_RegisterUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterUserRequest)
+func _ProjectAmor_AddHome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddHomeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectAmorServer).RegisterUser(ctx, in)
+		return srv.(ProjectAmorServer).AddHome(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectAmor_RegisterUser_FullMethodName,
+		FullMethod: ProjectAmor_AddHome_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectAmorServer).RegisterUser(ctx, req.(*RegisterUserRequest))
+		return srv.(ProjectAmorServer).AddHome(ctx, req.(*AddHomeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectAmor_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteUserRequest)
+func _ProjectAmor_DeleteHome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteHomeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectAmorServer).DeleteUser(ctx, in)
+		return srv.(ProjectAmorServer).DeleteHome(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectAmor_DeleteUser_FullMethodName,
+		FullMethod: ProjectAmor_DeleteHome_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectAmorServer).DeleteUser(ctx, req.(*DeleteUserRequest))
+		return srv.(ProjectAmorServer).DeleteHome(ctx, req.(*DeleteHomeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectAmor_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateUserRequest)
+func _ProjectAmor_UpdateHome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateHomeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectAmorServer).UpdateUser(ctx, in)
+		return srv.(ProjectAmorServer).UpdateHome(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectAmor_UpdateUser_FullMethodName,
+		FullMethod: ProjectAmor_UpdateHome_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectAmorServer).UpdateUser(ctx, req.(*UpdateUserRequest))
+		return srv.(ProjectAmorServer).UpdateHome(ctx, req.(*UpdateHomeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectAmor_GetUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetUserRequest)
+func _ProjectAmor_GetHome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHomeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProjectAmorServer).GetUser(ctx, in)
+		return srv.(ProjectAmorServer).GetHome(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProjectAmor_GetUser_FullMethodName,
+		FullMethod: ProjectAmor_GetHome_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProjectAmorServer).GetUser(ctx, req.(*GetUserRequest))
+		return srv.(ProjectAmorServer).GetHome(ctx, req.(*GetHomeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -200,20 +200,20 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ProjectAmorServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RegisterUser",
-			Handler:    _ProjectAmor_RegisterUser_Handler,
+			MethodName: "AddHome",
+			Handler:    _ProjectAmor_AddHome_Handler,
 		},
 		{
-			MethodName: "DeleteUser",
-			Handler:    _ProjectAmor_DeleteUser_Handler,
+			MethodName: "DeleteHome",
+			Handler:    _ProjectAmor_DeleteHome_Handler,
 		},
 		{
-			MethodName: "UpdateUser",
-			Handler:    _ProjectAmor_UpdateUser_Handler,
+			MethodName: "UpdateHome",
+			Handler:    _ProjectAmor_UpdateHome_Handler,
 		},
 		{
-			MethodName: "GetUser",
-			Handler:    _ProjectAmor_GetUser_Handler,
+			MethodName: "GetHome",
+			Handler:    _ProjectAmor_GetHome_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
