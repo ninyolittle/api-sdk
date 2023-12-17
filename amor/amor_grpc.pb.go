@@ -24,6 +24,7 @@ const (
 	ProjectAmor_DeleteHome_FullMethodName = "/ProjectAmor/DeleteHome"
 	ProjectAmor_UpdateHome_FullMethodName = "/ProjectAmor/UpdateHome"
 	ProjectAmor_GetHome_FullMethodName    = "/ProjectAmor/GetHome"
+	ProjectAmor_ListHome_FullMethodName   = "/ProjectAmor/ListHome"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -34,6 +35,7 @@ type ProjectAmorClient interface {
 	DeleteHome(ctx context.Context, in *DeleteHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	UpdateHome(ctx context.Context, in *UpdateHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error)
+	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error)
 }
 
 type projectAmorClient struct {
@@ -80,6 +82,38 @@ func (c *projectAmorClient) GetHome(ctx context.Context, in *GetHomeRequest, opt
 	return out, nil
 }
 
+func (c *projectAmorClient) ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ProjectAmor_ServiceDesc.Streams[0], ProjectAmor_ListHome_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &projectAmorListHomeClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ProjectAmor_ListHomeClient interface {
+	Recv() (*GetHomeResponse, error)
+	grpc.ClientStream
+}
+
+type projectAmorListHomeClient struct {
+	grpc.ClientStream
+}
+
+func (x *projectAmorListHomeClient) Recv() (*GetHomeResponse, error) {
+	m := new(GetHomeResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -88,6 +122,7 @@ type ProjectAmorServer interface {
 	DeleteHome(context.Context, *DeleteHomeRequest) (*empty.Empty, error)
 	UpdateHome(context.Context, *UpdateHomeRequest) (*empty.Empty, error)
 	GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error)
+	ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -106,6 +141,9 @@ func (UnimplementedProjectAmorServer) UpdateHome(context.Context, *UpdateHomeReq
 }
 func (UnimplementedProjectAmorServer) GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHome not implemented")
+}
+func (UnimplementedProjectAmorServer) ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListHome not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -192,6 +230,27 @@ func _ProjectAmor_GetHome_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_ListHome_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListHomeRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ProjectAmorServer).ListHome(m, &projectAmorListHomeServer{stream})
+}
+
+type ProjectAmor_ListHomeServer interface {
+	Send(*GetHomeResponse) error
+	grpc.ServerStream
+}
+
+type projectAmorListHomeServer struct {
+	grpc.ServerStream
+}
+
+func (x *projectAmorListHomeServer) Send(m *GetHomeResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -216,6 +275,12 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProjectAmor_GetHome_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "ListHome",
+			Handler:       _ProjectAmor_ListHome_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "amor/amor.proto",
 }
