@@ -18,7 +18,7 @@ jobs:
     - name: Increment Tag
       id: increment_tag
       run: |
-        LATEST_TAG=${{ steps.get_tag.outputs.tag }}
+        LATEST_TAG=${{ env.tag }}
         IFS='.' read -r -a version_parts <<< "$LATEST_TAG"
         # Increment the last part of the version
         version_parts[2]=$((version_parts[2]+1))
