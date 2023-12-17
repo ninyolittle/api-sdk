@@ -1,0 +1,33 @@
+name: auto_tag
+on:
+  push:
+    branches:
+      - main
+jobs:
+  tag_repo:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Get Latest Tag
+      id: get_tag
+      run: |
+        LATEST_TAG=$(curl -s "https://api.github.com/repos/Ninolito/api-sdk/tags" | jq -r '.[0].name')
+        echo "Latest Tag: $LATEST_TAG"
+        echo "tag=$LATEST_TAG" >> $GITHUB_ENV
+        
+    - name: Increment Tag
+      id: increment_tag
+      run: |
+        LATEST_TAG=${{ steps.get_tag.outputs.tag }}
+        IFS='.' read -r -a version_parts <<< "$LATEST_TAG"
+        # Increment the last part of the version
+        version_parts[2]=$((version_parts[2]+1))
+        INCREMENTED_TAG="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}"
+        echo "Incremented Tag: $INCREMENTED_TAG"
+        echo "incremented_tag=$INCREMENTED_TAG" >> $GITHUB_ENV
+
+    - uses: actions/checkout@v2
+    - name: Create tag
+      run: |
+        git tag ${{ steps.increment_tag.outputs.incremented_tag }}
+        git push origin ${{ steps.increment_tag.outputs.incremented_tag }}
