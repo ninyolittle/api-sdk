@@ -26,6 +26,7 @@ const (
 	ProjectAmor_GetHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
 	ProjectAmor_ListHome_FullMethodName   = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
 	ProjectAmor_GetRoom_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
+	ProjectAmor_ListRoom_FullMethodName   = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -38,6 +39,7 @@ type ProjectAmorClient interface {
 	GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error)
 	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error)
 	GetRoom(ctx context.Context, in *GetRoomRequest, opts ...grpc.CallOption) (*GetRoomResponse, error)
+	ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListHomeResponse, error)
 }
 
 type projectAmorClient struct {
@@ -125,6 +127,15 @@ func (c *projectAmorClient) GetRoom(ctx context.Context, in *GetRoomRequest, opt
 	return out, nil
 }
 
+func (c *projectAmorClient) ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListHomeResponse, error) {
+	out := new(ListHomeResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_ListRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -135,6 +146,7 @@ type ProjectAmorServer interface {
 	GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error)
 	ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error
 	GetRoom(context.Context, *GetRoomRequest) (*GetRoomResponse, error)
+	ListRoom(context.Context, *ListRoomRequest) (*ListHomeResponse, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -159,6 +171,9 @@ func (UnimplementedProjectAmorServer) ListHome(*ListHomeRequest, ProjectAmor_Lis
 }
 func (UnimplementedProjectAmorServer) GetRoom(context.Context, *GetRoomRequest) (*GetRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRoom not implemented")
+}
+func (UnimplementedProjectAmorServer) ListRoom(context.Context, *ListRoomRequest) (*ListHomeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListRoom not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -284,6 +299,24 @@ func _ProjectAmor_GetRoom_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_ListRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).ListRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_ListRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).ListRoom(ctx, req.(*ListRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -310,6 +343,10 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRoom",
 			Handler:    _ProjectAmor_GetRoom_Handler,
+		},
+		{
+			MethodName: "ListRoom",
+			Handler:    _ProjectAmor_ListRoom_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

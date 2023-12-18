@@ -23,6 +23,100 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ListRoomResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id []int64 `protobuf:"varint,1,rep,packed,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *ListRoomResponse) Reset() {
+	*x = ListRoomResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_amor_amor_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListRoomResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRoomResponse) ProtoMessage() {}
+
+func (x *ListRoomResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_amor_amor_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRoomResponse.ProtoReflect.Descriptor instead.
+func (*ListRoomResponse) Descriptor() ([]byte, []int) {
+	return file_amor_amor_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *ListRoomResponse) GetId() []int64 {
+	if x != nil {
+		return x.Id
+	}
+	return nil
+}
+
+type ListRoomRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	HomeId int64 `protobuf:"varint,1,opt,name=home_id,json=homeId,proto3" json:"home_id,omitempty"`
+}
+
+func (x *ListRoomRequest) Reset() {
+	*x = ListRoomRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_amor_amor_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ListRoomRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListRoomRequest) ProtoMessage() {}
+
+func (x *ListRoomRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_amor_amor_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListRoomRequest.ProtoReflect.Descriptor instead.
+func (*ListRoomRequest) Descriptor() ([]byte, []int) {
+	return file_amor_amor_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ListRoomRequest) GetHomeId() int64 {
+	if x != nil {
+		return x.HomeId
+	}
+	return 0
+}
+
 type GetRoomResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -42,7 +136,7 @@ type GetRoomResponse struct {
 func (x *GetRoomResponse) Reset() {
 	*x = GetRoomResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[0]
+		mi := &file_amor_amor_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -55,7 +149,7 @@ func (x *GetRoomResponse) String() string {
 func (*GetRoomResponse) ProtoMessage() {}
 
 func (x *GetRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[0]
+	mi := &file_amor_amor_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -68,7 +162,7 @@ func (x *GetRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomResponse.ProtoReflect.Descriptor instead.
 func (*GetRoomResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{0}
+	return file_amor_amor_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetRoomResponse) GetId() int64 {
@@ -145,7 +239,7 @@ type GetRoomRequest struct {
 func (x *GetRoomRequest) Reset() {
 	*x = GetRoomRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[1]
+		mi := &file_amor_amor_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -158,7 +252,7 @@ func (x *GetRoomRequest) String() string {
 func (*GetRoomRequest) ProtoMessage() {}
 
 func (x *GetRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[1]
+	mi := &file_amor_amor_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -171,7 +265,7 @@ func (x *GetRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomRequest.ProtoReflect.Descriptor instead.
 func (*GetRoomRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{1}
+	return file_amor_amor_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetRoomRequest) GetId() int64 {
@@ -190,7 +284,7 @@ type ListHomeRequest struct {
 func (x *ListHomeRequest) Reset() {
 	*x = ListHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[2]
+		mi := &file_amor_amor_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -203,7 +297,7 @@ func (x *ListHomeRequest) String() string {
 func (*ListHomeRequest) ProtoMessage() {}
 
 func (x *ListHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[2]
+	mi := &file_amor_amor_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -216,7 +310,7 @@ func (x *ListHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHomeRequest.ProtoReflect.Descriptor instead.
 func (*ListHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{2}
+	return file_amor_amor_proto_rawDescGZIP(), []int{4}
 }
 
 type ListHomeResponse struct {
@@ -231,7 +325,7 @@ type ListHomeResponse struct {
 func (x *ListHomeResponse) Reset() {
 	*x = ListHomeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[3]
+		mi := &file_amor_amor_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -244,7 +338,7 @@ func (x *ListHomeResponse) String() string {
 func (*ListHomeResponse) ProtoMessage() {}
 
 func (x *ListHomeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[3]
+	mi := &file_amor_amor_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -257,7 +351,7 @@ func (x *ListHomeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHomeResponse.ProtoReflect.Descriptor instead.
 func (*ListHomeResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{3}
+	return file_amor_amor_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListHomeResponse) GetId() int64 {
@@ -285,7 +379,7 @@ type GetHomeRequest struct {
 func (x *GetHomeRequest) Reset() {
 	*x = GetHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[4]
+		mi := &file_amor_amor_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -298,7 +392,7 @@ func (x *GetHomeRequest) String() string {
 func (*GetHomeRequest) ProtoMessage() {}
 
 func (x *GetHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[4]
+	mi := &file_amor_amor_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -311,7 +405,7 @@ func (x *GetHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHomeRequest.ProtoReflect.Descriptor instead.
 func (*GetHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{4}
+	return file_amor_amor_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetHomeRequest) GetId() int64 {
@@ -339,7 +433,7 @@ type GetHomeResponse struct {
 func (x *GetHomeResponse) Reset() {
 	*x = GetHomeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[5]
+		mi := &file_amor_amor_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -352,7 +446,7 @@ func (x *GetHomeResponse) String() string {
 func (*GetHomeResponse) ProtoMessage() {}
 
 func (x *GetHomeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[5]
+	mi := &file_amor_amor_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -365,7 +459,7 @@ func (x *GetHomeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHomeResponse.ProtoReflect.Descriptor instead.
 func (*GetHomeResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{5}
+	return file_amor_amor_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetHomeResponse) GetId() int64 {
@@ -440,7 +534,7 @@ type UpdateHomeRequest struct {
 func (x *UpdateHomeRequest) Reset() {
 	*x = UpdateHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[6]
+		mi := &file_amor_amor_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -453,7 +547,7 @@ func (x *UpdateHomeRequest) String() string {
 func (*UpdateHomeRequest) ProtoMessage() {}
 
 func (x *UpdateHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[6]
+	mi := &file_amor_amor_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -466,7 +560,7 @@ func (x *UpdateHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateHomeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{6}
+	return file_amor_amor_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateHomeRequest) GetId() int64 {
@@ -522,7 +616,7 @@ type DeleteHomeRequest struct {
 func (x *DeleteHomeRequest) Reset() {
 	*x = DeleteHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[7]
+		mi := &file_amor_amor_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -535,7 +629,7 @@ func (x *DeleteHomeRequest) String() string {
 func (*DeleteHomeRequest) ProtoMessage() {}
 
 func (x *DeleteHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[7]
+	mi := &file_amor_amor_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -548,7 +642,7 @@ func (x *DeleteHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteHomeRequest.ProtoReflect.Descriptor instead.
 func (*DeleteHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{7}
+	return file_amor_amor_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *DeleteHomeRequest) GetId() int64 {
@@ -573,7 +667,7 @@ type AddHomeRequest struct {
 func (x *AddHomeRequest) Reset() {
 	*x = AddHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[8]
+		mi := &file_amor_amor_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -586,7 +680,7 @@ func (x *AddHomeRequest) String() string {
 func (*AddHomeRequest) ProtoMessage() {}
 
 func (x *AddHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[8]
+	mi := &file_amor_amor_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -599,7 +693,7 @@ func (x *AddHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddHomeRequest.ProtoReflect.Descriptor instead.
 func (*AddHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{8}
+	return file_amor_amor_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *AddHomeRequest) GetName() string {
@@ -648,7 +742,7 @@ type AddHomeResponse struct {
 func (x *AddHomeResponse) Reset() {
 	*x = AddHomeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[9]
+		mi := &file_amor_amor_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -661,7 +755,7 @@ func (x *AddHomeResponse) String() string {
 func (*AddHomeResponse) ProtoMessage() {}
 
 func (x *AddHomeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[9]
+	mi := &file_amor_amor_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +768,7 @@ func (x *AddHomeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddHomeResponse.ProtoReflect.Descriptor instead.
 func (*AddHomeResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{9}
+	return file_amor_amor_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *AddHomeResponse) GetName() string {
@@ -697,7 +791,12 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x76, 0x61, 0x72, 0x2f, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x22, 0x8b, 0x02, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73,
+	0x6f, 0x22, 0x22, 0x0a, 0x10, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0x2a, 0x0a, 0x0f, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f,
+	0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x68, 0x6f, 0x6d, 0x65,
+	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x68, 0x6f, 0x6d, 0x65, 0x49,
+	0x64, 0x22, 0x8b, 0x02, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73,
 	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x68, 0x6f, 0x6d, 0x65, 0x5f, 0x69, 0x64,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x68, 0x6f, 0x6d, 0x65, 0x49, 0x64, 0x12, 0x1a,
@@ -759,7 +858,7 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x6c, 0x61, 0x74, 0x6c, 0x6f, 0x6e, 0x67, 0x18, 0x05, 0x20, 0x03, 0x28, 0x01, 0x52, 0x07, 0x6c,
 	0x61, 0x74, 0x6c, 0x6f, 0x6e, 0x67, 0x22, 0x25, 0x0a, 0x0f, 0x41, 0x64, 0x64, 0x48, 0x6f, 0x6d,
 	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d,
-	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0xc0, 0x05,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0xc1, 0x06,
 	0x0a, 0x0b, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x41, 0x6d, 0x6f, 0x72, 0x12, 0x72, 0x0a,
 	0x07, 0x41, 0x64, 0x64, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x27, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65,
 	0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e,
@@ -804,10 +903,18 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70,
 	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1a, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x14, 0x12, 0x12, 0x2f, 0x76,
 	0x31, 0x2f, 0x68, 0x6f, 0x6d, 0x65, 0x2f, 0x72, 0x6f, 0x6f, 0x6d, 0x2f, 0x7b, 0x69, 0x64, 0x7d,
-	0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4e,
-	0x69, 0x6e, 0x6f, 0x6c, 0x69, 0x74, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61,
-	0x6d, 0x6f, 0x72, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6d, 0x6f, 0x72, 0x62, 0x06, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x33,
+	0x12, 0x7f, 0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x28, 0x2e, 0x70,
+	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61,
+	0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
+	0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31,
+	0x2e, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x22, 0x16, 0x2f, 0x76, 0x31, 0x2f, 0x68,
+	0x6f, 0x6d, 0x65, 0x2f, 0x72, 0x6f, 0x6f, 0x6d, 0x2f, 0x61, 0x6c, 0x6c, 0x3a, 0x72, 0x65, 0x61,
+	0x64, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x4e, 0x69, 0x6e, 0x6f, 0x6c, 0x69, 0x74, 0x6f, 0x2f, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
+	0x61, 0x6d, 0x6f, 0x72, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6d, 0x6f, 0x72, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -822,39 +929,43 @@ func file_amor_amor_proto_rawDescGZIP() []byte {
 	return file_amor_amor_proto_rawDescData
 }
 
-var file_amor_amor_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_amor_amor_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_amor_amor_proto_goTypes = []interface{}{
-	(*GetRoomResponse)(nil),    // 0: projectamor_api.amor.v1.GetRoomResponse
-	(*GetRoomRequest)(nil),     // 1: projectamor_api.amor.v1.GetRoomRequest
-	(*ListHomeRequest)(nil),    // 2: projectamor_api.amor.v1.ListHomeRequest
-	(*ListHomeResponse)(nil),   // 3: projectamor_api.amor.v1.ListHomeResponse
-	(*GetHomeRequest)(nil),     // 4: projectamor_api.amor.v1.GetHomeRequest
-	(*GetHomeResponse)(nil),    // 5: projectamor_api.amor.v1.GetHomeResponse
-	(*UpdateHomeRequest)(nil),  // 6: projectamor_api.amor.v1.UpdateHomeRequest
-	(*DeleteHomeRequest)(nil),  // 7: projectamor_api.amor.v1.DeleteHomeRequest
-	(*AddHomeRequest)(nil),     // 8: projectamor_api.amor.v1.AddHomeRequest
-	(*AddHomeResponse)(nil),    // 9: projectamor_api.amor.v1.AddHomeResponse
-	(*amor_var.Owner)(nil),     // 10: Owner
-	(*amor_var.Utilities)(nil), // 11: Utilities
-	(*empty.Empty)(nil),        // 12: google.protobuf.Empty
+	(*ListRoomResponse)(nil),   // 0: projectamor_api.amor.v1.ListRoomResponse
+	(*ListRoomRequest)(nil),    // 1: projectamor_api.amor.v1.ListRoomRequest
+	(*GetRoomResponse)(nil),    // 2: projectamor_api.amor.v1.GetRoomResponse
+	(*GetRoomRequest)(nil),     // 3: projectamor_api.amor.v1.GetRoomRequest
+	(*ListHomeRequest)(nil),    // 4: projectamor_api.amor.v1.ListHomeRequest
+	(*ListHomeResponse)(nil),   // 5: projectamor_api.amor.v1.ListHomeResponse
+	(*GetHomeRequest)(nil),     // 6: projectamor_api.amor.v1.GetHomeRequest
+	(*GetHomeResponse)(nil),    // 7: projectamor_api.amor.v1.GetHomeResponse
+	(*UpdateHomeRequest)(nil),  // 8: projectamor_api.amor.v1.UpdateHomeRequest
+	(*DeleteHomeRequest)(nil),  // 9: projectamor_api.amor.v1.DeleteHomeRequest
+	(*AddHomeRequest)(nil),     // 10: projectamor_api.amor.v1.AddHomeRequest
+	(*AddHomeResponse)(nil),    // 11: projectamor_api.amor.v1.AddHomeResponse
+	(*amor_var.Owner)(nil),     // 12: Owner
+	(*amor_var.Utilities)(nil), // 13: Utilities
+	(*empty.Empty)(nil),        // 14: google.protobuf.Empty
 }
 var file_amor_amor_proto_depIdxs = []int32{
-	10, // 0: projectamor_api.amor.v1.GetHomeResponse.owner:type_name -> Owner
-	11, // 1: projectamor_api.amor.v1.GetHomeResponse.utilities:type_name -> Utilities
-	8,  // 2: projectamor_api.amor.v1.ProjectAmor.AddHome:input_type -> projectamor_api.amor.v1.AddHomeRequest
-	7,  // 3: projectamor_api.amor.v1.ProjectAmor.DeleteHome:input_type -> projectamor_api.amor.v1.DeleteHomeRequest
-	6,  // 4: projectamor_api.amor.v1.ProjectAmor.UpdateHome:input_type -> projectamor_api.amor.v1.UpdateHomeRequest
-	4,  // 5: projectamor_api.amor.v1.ProjectAmor.GetHome:input_type -> projectamor_api.amor.v1.GetHomeRequest
-	2,  // 6: projectamor_api.amor.v1.ProjectAmor.ListHome:input_type -> projectamor_api.amor.v1.ListHomeRequest
-	1,  // 7: projectamor_api.amor.v1.ProjectAmor.GetRoom:input_type -> projectamor_api.amor.v1.GetRoomRequest
-	9,  // 8: projectamor_api.amor.v1.ProjectAmor.AddHome:output_type -> projectamor_api.amor.v1.AddHomeResponse
-	12, // 9: projectamor_api.amor.v1.ProjectAmor.DeleteHome:output_type -> google.protobuf.Empty
-	12, // 10: projectamor_api.amor.v1.ProjectAmor.UpdateHome:output_type -> google.protobuf.Empty
-	5,  // 11: projectamor_api.amor.v1.ProjectAmor.GetHome:output_type -> projectamor_api.amor.v1.GetHomeResponse
-	3,  // 12: projectamor_api.amor.v1.ProjectAmor.ListHome:output_type -> projectamor_api.amor.v1.ListHomeResponse
-	0,  // 13: projectamor_api.amor.v1.ProjectAmor.GetRoom:output_type -> projectamor_api.amor.v1.GetRoomResponse
-	8,  // [8:14] is the sub-list for method output_type
-	2,  // [2:8] is the sub-list for method input_type
+	12, // 0: projectamor_api.amor.v1.GetHomeResponse.owner:type_name -> Owner
+	13, // 1: projectamor_api.amor.v1.GetHomeResponse.utilities:type_name -> Utilities
+	10, // 2: projectamor_api.amor.v1.ProjectAmor.AddHome:input_type -> projectamor_api.amor.v1.AddHomeRequest
+	9,  // 3: projectamor_api.amor.v1.ProjectAmor.DeleteHome:input_type -> projectamor_api.amor.v1.DeleteHomeRequest
+	8,  // 4: projectamor_api.amor.v1.ProjectAmor.UpdateHome:input_type -> projectamor_api.amor.v1.UpdateHomeRequest
+	6,  // 5: projectamor_api.amor.v1.ProjectAmor.GetHome:input_type -> projectamor_api.amor.v1.GetHomeRequest
+	4,  // 6: projectamor_api.amor.v1.ProjectAmor.ListHome:input_type -> projectamor_api.amor.v1.ListHomeRequest
+	3,  // 7: projectamor_api.amor.v1.ProjectAmor.GetRoom:input_type -> projectamor_api.amor.v1.GetRoomRequest
+	1,  // 8: projectamor_api.amor.v1.ProjectAmor.ListRoom:input_type -> projectamor_api.amor.v1.ListRoomRequest
+	11, // 9: projectamor_api.amor.v1.ProjectAmor.AddHome:output_type -> projectamor_api.amor.v1.AddHomeResponse
+	14, // 10: projectamor_api.amor.v1.ProjectAmor.DeleteHome:output_type -> google.protobuf.Empty
+	14, // 11: projectamor_api.amor.v1.ProjectAmor.UpdateHome:output_type -> google.protobuf.Empty
+	7,  // 12: projectamor_api.amor.v1.ProjectAmor.GetHome:output_type -> projectamor_api.amor.v1.GetHomeResponse
+	5,  // 13: projectamor_api.amor.v1.ProjectAmor.ListHome:output_type -> projectamor_api.amor.v1.ListHomeResponse
+	2,  // 14: projectamor_api.amor.v1.ProjectAmor.GetRoom:output_type -> projectamor_api.amor.v1.GetRoomResponse
+	5,  // 15: projectamor_api.amor.v1.ProjectAmor.ListRoom:output_type -> projectamor_api.amor.v1.ListHomeResponse
+	9,  // [9:16] is the sub-list for method output_type
+	2,  // [2:9] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
 	2,  // [2:2] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name
@@ -867,7 +978,7 @@ func file_amor_amor_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_amor_amor_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRoomResponse); i {
+			switch v := v.(*ListRoomResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -879,7 +990,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRoomRequest); i {
+			switch v := v.(*ListRoomRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -891,7 +1002,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListHomeRequest); i {
+			switch v := v.(*GetRoomResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -903,7 +1014,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListHomeResponse); i {
+			switch v := v.(*GetRoomRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -915,7 +1026,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetHomeRequest); i {
+			switch v := v.(*ListHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -927,7 +1038,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetHomeResponse); i {
+			switch v := v.(*ListHomeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -939,7 +1050,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateHomeRequest); i {
+			switch v := v.(*GetHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -951,7 +1062,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteHomeRequest); i {
+			switch v := v.(*GetHomeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -963,7 +1074,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddHomeRequest); i {
+			switch v := v.(*UpdateHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -975,6 +1086,30 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteHomeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_amor_amor_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddHomeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_amor_amor_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AddHomeResponse); i {
 			case 0:
 				return &v.state
@@ -993,7 +1128,7 @@ func file_amor_amor_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_amor_amor_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
