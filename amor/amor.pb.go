@@ -168,14 +168,14 @@ type GetHomeResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id        int64               `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name      string              `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Address   string              `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
-	Type      string              `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
-	Rating    float64             `protobuf:"fixed64,5,opt,name=rating,proto3" json:"rating,omitempty"`
-	Owner     string              `protobuf:"bytes,6,opt,name=owner,proto3" json:"owner,omitempty"`
-	Latlong   []float64           `protobuf:"fixed64,7,rep,packed,name=latlong,proto3" json:"latlong,omitempty"`
-	Utilities *amor_var.Utilities `protobuf:"bytes,8,opt,name=utilities,proto3" json:"utilities,omitempty"`
+	Id        int64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name      string                `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Address   string                `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
+	Type      string                `protobuf:"bytes,4,opt,name=type,proto3" json:"type,omitempty"`
+	Rating    float64               `protobuf:"fixed64,5,opt,name=rating,proto3" json:"rating,omitempty"`
+	Owner     string                `protobuf:"bytes,6,opt,name=owner,proto3" json:"owner,omitempty"`
+	Latlong   []float64             `protobuf:"fixed64,7,rep,packed,name=latlong,proto3" json:"latlong,omitempty"`
+	Utilities []*amor_var.Utilities `protobuf:"bytes,8,rep,name=utilities,proto3" json:"utilities,omitempty"`
 }
 
 func (x *GetHomeResponse) Reset() {
@@ -259,7 +259,7 @@ func (x *GetHomeResponse) GetLatlong() []float64 {
 	return nil
 }
 
-func (x *GetHomeResponse) GetUtilities() *amor_var.Utilities {
+func (x *GetHomeResponse) GetUtilities() []*amor_var.Utilities {
 	if x != nil {
 		return x.Utilities
 	}
@@ -556,7 +556,7 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x12, 0x18, 0x0a, 0x07,
 	0x6c, 0x61, 0x74, 0x6c, 0x6f, 0x6e, 0x67, 0x18, 0x07, 0x20, 0x03, 0x28, 0x01, 0x52, 0x07, 0x6c,
 	0x61, 0x74, 0x6c, 0x6f, 0x6e, 0x67, 0x12, 0x28, 0x0a, 0x09, 0x75, 0x74, 0x69, 0x6c, 0x69, 0x74,
-	0x69, 0x65, 0x73, 0x18, 0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x55, 0x74, 0x69, 0x6c,
+	0x69, 0x65, 0x73, 0x18, 0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x55, 0x74, 0x69, 0x6c,
 	0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x09, 0x75, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73,
 	0x22, 0x95, 0x01, 0x0a, 0x11, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x48, 0x6f, 0x6d, 0x65, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
