@@ -272,7 +272,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/home/add"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/home/add"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -297,7 +297,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -322,7 +322,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -347,7 +347,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -418,7 +418,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/home/add"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/home/add"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -440,7 +440,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -462,7 +462,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -484,7 +484,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -506,7 +506,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/.ProjectAmor/ListHome", runtime.WithHTTPPathPattern("/v1/home/all:read"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListHome", runtime.WithHTTPPathPattern("/v1/home/all:read"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

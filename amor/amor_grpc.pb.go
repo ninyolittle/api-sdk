@@ -20,11 +20,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ProjectAmor_AddHome_FullMethodName    = "/ProjectAmor/AddHome"
-	ProjectAmor_DeleteHome_FullMethodName = "/ProjectAmor/DeleteHome"
-	ProjectAmor_UpdateHome_FullMethodName = "/ProjectAmor/UpdateHome"
-	ProjectAmor_GetHome_FullMethodName    = "/ProjectAmor/GetHome"
-	ProjectAmor_ListHome_FullMethodName   = "/ProjectAmor/ListHome"
+	ProjectAmor_AddHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/AddHome"
+	ProjectAmor_DeleteHome_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/DeleteHome"
+	ProjectAmor_UpdateHome_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/UpdateHome"
+	ProjectAmor_GetHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
+	ProjectAmor_ListHome_FullMethodName   = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -255,7 +255,7 @@ func (x *projectAmorListHomeServer) Send(m *ListHomeResponse) error {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "ProjectAmor",
+	ServiceName: "projectamor_api.amor.v1.ProjectAmor",
 	HandlerType: (*ProjectAmorServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
