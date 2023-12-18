@@ -35,7 +35,7 @@ type ProjectAmorClient interface {
 	DeleteHome(ctx context.Context, in *DeleteHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	UpdateHome(ctx context.Context, in *UpdateHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error)
-	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error)
+	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (*ListHomeResponse, error)
 }
 
 type projectAmorClient struct {
@@ -82,36 +82,13 @@ func (c *projectAmorClient) GetHome(ctx context.Context, in *GetHomeRequest, opt
 	return out, nil
 }
 
-func (c *projectAmorClient) ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &ProjectAmor_ServiceDesc.Streams[0], ProjectAmor_ListHome_FullMethodName, opts...)
+func (c *projectAmorClient) ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (*ListHomeResponse, error) {
+	out := new(ListHomeResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_ListHome_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &projectAmorListHomeClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type ProjectAmor_ListHomeClient interface {
-	Recv() (*GetHomeResponse, error)
-	grpc.ClientStream
-}
-
-type projectAmorListHomeClient struct {
-	grpc.ClientStream
-}
-
-func (x *projectAmorListHomeClient) Recv() (*GetHomeResponse, error) {
-	m := new(GetHomeResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	return out, nil
 }
 
 // ProjectAmorServer is the server API for ProjectAmor service.
@@ -122,7 +99,7 @@ type ProjectAmorServer interface {
 	DeleteHome(context.Context, *DeleteHomeRequest) (*empty.Empty, error)
 	UpdateHome(context.Context, *UpdateHomeRequest) (*empty.Empty, error)
 	GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error)
-	ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error
+	ListHome(context.Context, *ListHomeRequest) (*ListHomeResponse, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -142,8 +119,8 @@ func (UnimplementedProjectAmorServer) UpdateHome(context.Context, *UpdateHomeReq
 func (UnimplementedProjectAmorServer) GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHome not implemented")
 }
-func (UnimplementedProjectAmorServer) ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error {
-	return status.Errorf(codes.Unimplemented, "method ListHome not implemented")
+func (UnimplementedProjectAmorServer) ListHome(context.Context, *ListHomeRequest) (*ListHomeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListHome not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -230,25 +207,22 @@ func _ProjectAmor_GetHome_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProjectAmor_ListHome_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(ListHomeRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
+func _ProjectAmor_ListHome_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListHomeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
 	}
-	return srv.(ProjectAmorServer).ListHome(m, &projectAmorListHomeServer{stream})
-}
-
-type ProjectAmor_ListHomeServer interface {
-	Send(*GetHomeResponse) error
-	grpc.ServerStream
-}
-
-type projectAmorListHomeServer struct {
-	grpc.ServerStream
-}
-
-func (x *projectAmorListHomeServer) Send(m *GetHomeResponse) error {
-	return x.ServerStream.SendMsg(m)
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).ListHome(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_ListHome_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).ListHome(ctx, req.(*ListHomeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
@@ -274,13 +248,11 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "GetHome",
 			Handler:    _ProjectAmor_GetHome_Handler,
 		},
-	},
-	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "ListHome",
-			Handler:       _ProjectAmor_ListHome_Handler,
-			ServerStreams: true,
+			MethodName: "ListHome",
+			Handler:    _ProjectAmor_ListHome_Handler,
 		},
 	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "amor/amor.proto",
 }
