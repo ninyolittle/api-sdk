@@ -39,7 +39,7 @@ type ProjectAmorClient interface {
 	GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error)
 	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error)
 	GetRoom(ctx context.Context, in *GetRoomRequest, opts ...grpc.CallOption) (*GetRoomResponse, error)
-	ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListHomeResponse, error)
+	ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListRoomResponse, error)
 }
 
 type projectAmorClient struct {
@@ -127,8 +127,8 @@ func (c *projectAmorClient) GetRoom(ctx context.Context, in *GetRoomRequest, opt
 	return out, nil
 }
 
-func (c *projectAmorClient) ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListHomeResponse, error) {
-	out := new(ListHomeResponse)
+func (c *projectAmorClient) ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListRoomResponse, error) {
+	out := new(ListRoomResponse)
 	err := c.cc.Invoke(ctx, ProjectAmor_ListRoom_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -146,7 +146,7 @@ type ProjectAmorServer interface {
 	GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error)
 	ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error
 	GetRoom(context.Context, *GetRoomRequest) (*GetRoomResponse, error)
-	ListRoom(context.Context, *ListRoomRequest) (*ListHomeResponse, error)
+	ListRoom(context.Context, *ListRoomRequest) (*ListRoomResponse, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -172,7 +172,7 @@ func (UnimplementedProjectAmorServer) ListHome(*ListHomeRequest, ProjectAmor_Lis
 func (UnimplementedProjectAmorServer) GetRoom(context.Context, *GetRoomRequest) (*GetRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRoom not implemented")
 }
-func (UnimplementedProjectAmorServer) ListRoom(context.Context, *ListRoomRequest) (*ListHomeResponse, error) {
+func (UnimplementedProjectAmorServer) ListRoom(context.Context, *ListRoomRequest) (*ListRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListRoom not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
