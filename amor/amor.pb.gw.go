@@ -442,7 +442,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/home/add"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/accommodation/add"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -467,7 +467,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -492,7 +492,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -517,7 +517,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -549,7 +549,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetRoom", runtime.WithHTTPPathPattern("/v1/home/room/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -574,7 +574,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListRoom", runtime.WithHTTPPathPattern("/v1/home/room/all:read"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/all:read"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -713,7 +713,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/home/add"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/accommodation/add"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -735,7 +735,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -757,7 +757,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -779,7 +779,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/home/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/accommodation/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -801,7 +801,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListHome", runtime.WithHTTPPathPattern("/v1/home/all:read"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListHome", runtime.WithHTTPPathPattern("/v1/accommodation/all:read"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -823,7 +823,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetRoom", runtime.WithHTTPPathPattern("/v1/home/room/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -845,7 +845,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListRoom", runtime.WithHTTPPathPattern("/v1/home/room/all:read"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/all:read"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -931,19 +931,19 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_ProjectAmor_AddHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "home", "add"}, ""))
+	pattern_ProjectAmor_AddHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "accommodation", "add"}, ""))
 
-	pattern_ProjectAmor_DeleteHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "home", "id"}, ""))
+	pattern_ProjectAmor_DeleteHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "accommodation", "id"}, ""))
 
-	pattern_ProjectAmor_UpdateHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "home", "id"}, ""))
+	pattern_ProjectAmor_UpdateHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "accommodation", "id"}, ""))
 
-	pattern_ProjectAmor_GetHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "home", "id"}, ""))
+	pattern_ProjectAmor_GetHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "accommodation", "id"}, ""))
 
-	pattern_ProjectAmor_ListHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "home", "all"}, "read"))
+	pattern_ProjectAmor_ListHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "accommodation", "all"}, "read"))
 
-	pattern_ProjectAmor_GetRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "home", "room", "id"}, ""))
+	pattern_ProjectAmor_GetRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "accommodation", "room", "id"}, ""))
 
-	pattern_ProjectAmor_ListRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v1", "home", "room", "all"}, "read"))
+	pattern_ProjectAmor_ListRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v1", "accommodation", "room", "all"}, "read"))
 
 	pattern_ProjectAmor_RegisterUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "user", "register"}, ""))
 
