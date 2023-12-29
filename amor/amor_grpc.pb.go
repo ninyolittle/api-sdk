@@ -24,6 +24,7 @@ const (
 	ProjectAmor_DeleteHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/DeleteHome"
 	ProjectAmor_UpdateHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/UpdateHome"
 	ProjectAmor_GetHome_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
+	ProjectAmor_GetHomeByUser_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser"
 	ProjectAmor_ListHome_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
 	ProjectAmor_GetRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
 	ProjectAmor_ListRoom_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
@@ -41,6 +42,7 @@ type ProjectAmorClient interface {
 	DeleteHome(ctx context.Context, in *DeleteHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	UpdateHome(ctx context.Context, in *UpdateHomeRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error)
+	GetHomeByUser(ctx context.Context, in *GetHomeByUserRequest, opts ...grpc.CallOption) (*GetHomeByUserResponse, error)
 	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error)
 	GetRoom(ctx context.Context, in *GetRoomRequest, opts ...grpc.CallOption) (*GetRoomResponse, error)
 	ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListRoomResponse, error)
@@ -88,6 +90,15 @@ func (c *projectAmorClient) UpdateHome(ctx context.Context, in *UpdateHomeReques
 func (c *projectAmorClient) GetHome(ctx context.Context, in *GetHomeRequest, opts ...grpc.CallOption) (*GetHomeResponse, error) {
 	out := new(GetHomeResponse)
 	err := c.cc.Invoke(ctx, ProjectAmor_GetHome_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectAmorClient) GetHomeByUser(ctx context.Context, in *GetHomeByUserRequest, opts ...grpc.CallOption) (*GetHomeByUserResponse, error) {
+	out := new(GetHomeByUserResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_GetHomeByUser_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -188,6 +199,7 @@ type ProjectAmorServer interface {
 	DeleteHome(context.Context, *DeleteHomeRequest) (*empty.Empty, error)
 	UpdateHome(context.Context, *UpdateHomeRequest) (*empty.Empty, error)
 	GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error)
+	GetHomeByUser(context.Context, *GetHomeByUserRequest) (*GetHomeByUserResponse, error)
 	ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error
 	GetRoom(context.Context, *GetRoomRequest) (*GetRoomResponse, error)
 	ListRoom(context.Context, *ListRoomRequest) (*ListRoomResponse, error)
@@ -213,6 +225,9 @@ func (UnimplementedProjectAmorServer) UpdateHome(context.Context, *UpdateHomeReq
 }
 func (UnimplementedProjectAmorServer) GetHome(context.Context, *GetHomeRequest) (*GetHomeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHome not implemented")
+}
+func (UnimplementedProjectAmorServer) GetHomeByUser(context.Context, *GetHomeByUserRequest) (*GetHomeByUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHomeByUser not implemented")
 }
 func (UnimplementedProjectAmorServer) ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListHome not implemented")
@@ -316,6 +331,24 @@ func _ProjectAmor_GetHome_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ProjectAmorServer).GetHome(ctx, req.(*GetHomeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectAmor_GetHomeByUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHomeByUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).GetHomeByUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_GetHomeByUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).GetHomeByUser(ctx, req.(*GetHomeByUserRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -471,6 +504,10 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetHome",
 			Handler:    _ProjectAmor_GetHome_Handler,
+		},
+		{
+			MethodName: "GetHomeByUser",
+			Handler:    _ProjectAmor_GetHomeByUser_Handler,
 		},
 		{
 			MethodName: "GetRoom",

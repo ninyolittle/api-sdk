@@ -23,6 +23,100 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type GetHomeByUserRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	UserId int64 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+}
+
+func (x *GetHomeByUserRequest) Reset() {
+	*x = GetHomeByUserRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_amor_amor_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetHomeByUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetHomeByUserRequest) ProtoMessage() {}
+
+func (x *GetHomeByUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_amor_amor_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetHomeByUserRequest.ProtoReflect.Descriptor instead.
+func (*GetHomeByUserRequest) Descriptor() ([]byte, []int) {
+	return file_amor_amor_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *GetHomeByUserRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type GetHomeByUserResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Accommodation []*amor_var.Accommodation `protobuf:"bytes,1,rep,name=accommodation,proto3" json:"accommodation,omitempty"`
+}
+
+func (x *GetHomeByUserResponse) Reset() {
+	*x = GetHomeByUserResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_amor_amor_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetHomeByUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetHomeByUserResponse) ProtoMessage() {}
+
+func (x *GetHomeByUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_amor_amor_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetHomeByUserResponse.ProtoReflect.Descriptor instead.
+func (*GetHomeByUserResponse) Descriptor() ([]byte, []int) {
+	return file_amor_amor_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetHomeByUserResponse) GetAccommodation() []*amor_var.Accommodation {
+	if x != nil {
+		return x.Accommodation
+	}
+	return nil
+}
+
 type GetUserRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -34,7 +128,7 @@ type GetUserRequest struct {
 func (x *GetUserRequest) Reset() {
 	*x = GetUserRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[0]
+		mi := &file_amor_amor_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -47,7 +141,7 @@ func (x *GetUserRequest) String() string {
 func (*GetUserRequest) ProtoMessage() {}
 
 func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[0]
+	mi := &file_amor_amor_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +154,7 @@ func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
 func (*GetUserRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{0}
+	return file_amor_amor_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetUserRequest) GetId() int64 {
@@ -86,7 +180,7 @@ type GetUserResponse struct {
 func (x *GetUserResponse) Reset() {
 	*x = GetUserResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[1]
+		mi := &file_amor_amor_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -99,7 +193,7 @@ func (x *GetUserResponse) String() string {
 func (*GetUserResponse) ProtoMessage() {}
 
 func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[1]
+	mi := &file_amor_amor_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -112,7 +206,7 @@ func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
 func (*GetUserResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{1}
+	return file_amor_amor_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetUserResponse) GetId() int64 {
@@ -166,7 +260,7 @@ type ListUtilitiesRequest struct {
 func (x *ListUtilitiesRequest) Reset() {
 	*x = ListUtilitiesRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[2]
+		mi := &file_amor_amor_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -179,7 +273,7 @@ func (x *ListUtilitiesRequest) String() string {
 func (*ListUtilitiesRequest) ProtoMessage() {}
 
 func (x *ListUtilitiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[2]
+	mi := &file_amor_amor_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -192,7 +286,7 @@ func (x *ListUtilitiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUtilitiesRequest.ProtoReflect.Descriptor instead.
 func (*ListUtilitiesRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{2}
+	return file_amor_amor_proto_rawDescGZIP(), []int{4}
 }
 
 type ListUtilitiesResponse struct {
@@ -206,7 +300,7 @@ type ListUtilitiesResponse struct {
 func (x *ListUtilitiesResponse) Reset() {
 	*x = ListUtilitiesResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[3]
+		mi := &file_amor_amor_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -219,7 +313,7 @@ func (x *ListUtilitiesResponse) String() string {
 func (*ListUtilitiesResponse) ProtoMessage() {}
 
 func (x *ListUtilitiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[3]
+	mi := &file_amor_amor_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -232,7 +326,7 @@ func (x *ListUtilitiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListUtilitiesResponse.ProtoReflect.Descriptor instead.
 func (*ListUtilitiesResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{3}
+	return file_amor_amor_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ListUtilitiesResponse) GetUtilities() []*amor_var.Utilities {
@@ -260,7 +354,7 @@ type RegisterUserRequest struct {
 func (x *RegisterUserRequest) Reset() {
 	*x = RegisterUserRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[4]
+		mi := &file_amor_amor_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -273,7 +367,7 @@ func (x *RegisterUserRequest) String() string {
 func (*RegisterUserRequest) ProtoMessage() {}
 
 func (x *RegisterUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[4]
+	mi := &file_amor_amor_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -286,7 +380,7 @@ func (x *RegisterUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterUserRequest.ProtoReflect.Descriptor instead.
 func (*RegisterUserRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{4}
+	return file_amor_amor_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *RegisterUserRequest) GetFirstName() string {
@@ -354,7 +448,7 @@ type RegisterUserResponse struct {
 func (x *RegisterUserResponse) Reset() {
 	*x = RegisterUserResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[5]
+		mi := &file_amor_amor_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -367,7 +461,7 @@ func (x *RegisterUserResponse) String() string {
 func (*RegisterUserResponse) ProtoMessage() {}
 
 func (x *RegisterUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[5]
+	mi := &file_amor_amor_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -380,7 +474,7 @@ func (x *RegisterUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterUserResponse.ProtoReflect.Descriptor instead.
 func (*RegisterUserResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{5}
+	return file_amor_amor_proto_rawDescGZIP(), []int{7}
 }
 
 type LoginUserRequest struct {
@@ -395,7 +489,7 @@ type LoginUserRequest struct {
 func (x *LoginUserRequest) Reset() {
 	*x = LoginUserRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[6]
+		mi := &file_amor_amor_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -408,7 +502,7 @@ func (x *LoginUserRequest) String() string {
 func (*LoginUserRequest) ProtoMessage() {}
 
 func (x *LoginUserRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[6]
+	mi := &file_amor_amor_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +515,7 @@ func (x *LoginUserRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginUserRequest.ProtoReflect.Descriptor instead.
 func (*LoginUserRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{6}
+	return file_amor_amor_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *LoginUserRequest) GetEmailAddress() string {
@@ -450,7 +544,7 @@ type LoginUserResponse struct {
 func (x *LoginUserResponse) Reset() {
 	*x = LoginUserResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[7]
+		mi := &file_amor_amor_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -463,7 +557,7 @@ func (x *LoginUserResponse) String() string {
 func (*LoginUserResponse) ProtoMessage() {}
 
 func (x *LoginUserResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[7]
+	mi := &file_amor_amor_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -476,7 +570,7 @@ func (x *LoginUserResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginUserResponse.ProtoReflect.Descriptor instead.
 func (*LoginUserResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{7}
+	return file_amor_amor_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *LoginUserResponse) GetAccessToken() string {
@@ -504,7 +598,7 @@ type ListRoomResponse struct {
 func (x *ListRoomResponse) Reset() {
 	*x = ListRoomResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[8]
+		mi := &file_amor_amor_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -517,7 +611,7 @@ func (x *ListRoomResponse) String() string {
 func (*ListRoomResponse) ProtoMessage() {}
 
 func (x *ListRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[8]
+	mi := &file_amor_amor_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -530,7 +624,7 @@ func (x *ListRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoomResponse.ProtoReflect.Descriptor instead.
 func (*ListRoomResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{8}
+	return file_amor_amor_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ListRoomResponse) GetRoom() []*amor_var.Room {
@@ -551,7 +645,7 @@ type ListRoomRequest struct {
 func (x *ListRoomRequest) Reset() {
 	*x = ListRoomRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[9]
+		mi := &file_amor_amor_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -564,7 +658,7 @@ func (x *ListRoomRequest) String() string {
 func (*ListRoomRequest) ProtoMessage() {}
 
 func (x *ListRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[9]
+	mi := &file_amor_amor_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -577,7 +671,7 @@ func (x *ListRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRoomRequest.ProtoReflect.Descriptor instead.
 func (*ListRoomRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{9}
+	return file_amor_amor_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ListRoomRequest) GetHomeId() int64 {
@@ -608,7 +702,7 @@ type GetRoomResponse struct {
 func (x *GetRoomResponse) Reset() {
 	*x = GetRoomResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[10]
+		mi := &file_amor_amor_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -621,7 +715,7 @@ func (x *GetRoomResponse) String() string {
 func (*GetRoomResponse) ProtoMessage() {}
 
 func (x *GetRoomResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[10]
+	mi := &file_amor_amor_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -634,7 +728,7 @@ func (x *GetRoomResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomResponse.ProtoReflect.Descriptor instead.
 func (*GetRoomResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{10}
+	return file_amor_amor_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetRoomResponse) GetId() int64 {
@@ -725,7 +819,7 @@ type GetRoomRequest struct {
 func (x *GetRoomRequest) Reset() {
 	*x = GetRoomRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[11]
+		mi := &file_amor_amor_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -738,7 +832,7 @@ func (x *GetRoomRequest) String() string {
 func (*GetRoomRequest) ProtoMessage() {}
 
 func (x *GetRoomRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[11]
+	mi := &file_amor_amor_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -751,7 +845,7 @@ func (x *GetRoomRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetRoomRequest.ProtoReflect.Descriptor instead.
 func (*GetRoomRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{11}
+	return file_amor_amor_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetRoomRequest) GetId() int64 {
@@ -770,7 +864,7 @@ type ListHomeRequest struct {
 func (x *ListHomeRequest) Reset() {
 	*x = ListHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[12]
+		mi := &file_amor_amor_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -783,7 +877,7 @@ func (x *ListHomeRequest) String() string {
 func (*ListHomeRequest) ProtoMessage() {}
 
 func (x *ListHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[12]
+	mi := &file_amor_amor_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -796,7 +890,7 @@ func (x *ListHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHomeRequest.ProtoReflect.Descriptor instead.
 func (*ListHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{12}
+	return file_amor_amor_proto_rawDescGZIP(), []int{14}
 }
 
 type ListHomeResponse struct {
@@ -811,7 +905,7 @@ type ListHomeResponse struct {
 func (x *ListHomeResponse) Reset() {
 	*x = ListHomeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[13]
+		mi := &file_amor_amor_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -824,7 +918,7 @@ func (x *ListHomeResponse) String() string {
 func (*ListHomeResponse) ProtoMessage() {}
 
 func (x *ListHomeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[13]
+	mi := &file_amor_amor_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -837,7 +931,7 @@ func (x *ListHomeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListHomeResponse.ProtoReflect.Descriptor instead.
 func (*ListHomeResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{13}
+	return file_amor_amor_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ListHomeResponse) GetId() int64 {
@@ -865,7 +959,7 @@ type GetHomeRequest struct {
 func (x *GetHomeRequest) Reset() {
 	*x = GetHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[14]
+		mi := &file_amor_amor_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -878,7 +972,7 @@ func (x *GetHomeRequest) String() string {
 func (*GetHomeRequest) ProtoMessage() {}
 
 func (x *GetHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[14]
+	mi := &file_amor_amor_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -891,7 +985,7 @@ func (x *GetHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHomeRequest.ProtoReflect.Descriptor instead.
 func (*GetHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{14}
+	return file_amor_amor_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *GetHomeRequest) GetId() int64 {
@@ -919,7 +1013,7 @@ type GetHomeResponse struct {
 func (x *GetHomeResponse) Reset() {
 	*x = GetHomeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[15]
+		mi := &file_amor_amor_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -932,7 +1026,7 @@ func (x *GetHomeResponse) String() string {
 func (*GetHomeResponse) ProtoMessage() {}
 
 func (x *GetHomeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[15]
+	mi := &file_amor_amor_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -945,7 +1039,7 @@ func (x *GetHomeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHomeResponse.ProtoReflect.Descriptor instead.
 func (*GetHomeResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{15}
+	return file_amor_amor_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *GetHomeResponse) GetId() int64 {
@@ -1020,7 +1114,7 @@ type UpdateHomeRequest struct {
 func (x *UpdateHomeRequest) Reset() {
 	*x = UpdateHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[16]
+		mi := &file_amor_amor_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1033,7 +1127,7 @@ func (x *UpdateHomeRequest) String() string {
 func (*UpdateHomeRequest) ProtoMessage() {}
 
 func (x *UpdateHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[16]
+	mi := &file_amor_amor_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1046,7 +1140,7 @@ func (x *UpdateHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateHomeRequest.ProtoReflect.Descriptor instead.
 func (*UpdateHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{16}
+	return file_amor_amor_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateHomeRequest) GetId() int64 {
@@ -1102,7 +1196,7 @@ type DeleteHomeRequest struct {
 func (x *DeleteHomeRequest) Reset() {
 	*x = DeleteHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[17]
+		mi := &file_amor_amor_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1115,7 +1209,7 @@ func (x *DeleteHomeRequest) String() string {
 func (*DeleteHomeRequest) ProtoMessage() {}
 
 func (x *DeleteHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[17]
+	mi := &file_amor_amor_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1128,7 +1222,7 @@ func (x *DeleteHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteHomeRequest.ProtoReflect.Descriptor instead.
 func (*DeleteHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{17}
+	return file_amor_amor_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DeleteHomeRequest) GetId() int64 {
@@ -1155,7 +1249,7 @@ type AddHomeRequest struct {
 func (x *AddHomeRequest) Reset() {
 	*x = AddHomeRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[18]
+		mi := &file_amor_amor_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1168,7 +1262,7 @@ func (x *AddHomeRequest) String() string {
 func (*AddHomeRequest) ProtoMessage() {}
 
 func (x *AddHomeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[18]
+	mi := &file_amor_amor_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1181,7 +1275,7 @@ func (x *AddHomeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddHomeRequest.ProtoReflect.Descriptor instead.
 func (*AddHomeRequest) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{18}
+	return file_amor_amor_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AddHomeRequest) GetName() string {
@@ -1244,7 +1338,7 @@ type AddHomeResponse struct {
 func (x *AddHomeResponse) Reset() {
 	*x = AddHomeResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_amor_amor_proto_msgTypes[19]
+		mi := &file_amor_amor_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1257,7 +1351,7 @@ func (x *AddHomeResponse) String() string {
 func (*AddHomeResponse) ProtoMessage() {}
 
 func (x *AddHomeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_amor_amor_proto_msgTypes[19]
+	mi := &file_amor_amor_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1270,7 +1364,7 @@ func (x *AddHomeResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddHomeResponse.ProtoReflect.Descriptor instead.
 func (*AddHomeResponse) Descriptor() ([]byte, []int) {
-	return file_amor_amor_proto_rawDescGZIP(), []int{19}
+	return file_amor_amor_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *AddHomeResponse) GetName() string {
@@ -1293,6 +1387,14 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x76, 0x61, 0x72, 0x2f, 0x68, 0x6f, 0x6d, 0x65, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x22, 0x2f, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x75, 0x73, 0x65, 0x72,
+	0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x75, 0x73, 0x65, 0x72, 0x49,
+	0x64, 0x22, 0x4d, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x42, 0x79, 0x55, 0x73,
+	0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x0d, 0x61, 0x63,
+	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x0e, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x52, 0x0d, 0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e,
 	0x22, 0x20, 0x0a, 0x0e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65,
 	0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02,
 	0x69, 0x64, 0x22, 0xa9, 0x01, 0x0a, 0x0f, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65,
@@ -1414,7 +1516,7 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x07, 0x20, 0x03, 0x28, 0x03, 0x52, 0x09, 0x75, 0x74, 0x69,
 	0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x22, 0x25, 0x0a, 0x0f, 0x41, 0x64, 0x64, 0x48, 0x6f, 0x6d,
 	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d,
-	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0x98, 0x0b,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0xb7, 0x0c,
 	0x0a, 0x0b, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x41, 0x6d, 0x6f, 0x72, 0x12, 0x7e, 0x0a,
 	0x07, 0x41, 0x64, 0x64, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x27, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65,
 	0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e,
@@ -1446,68 +1548,78 @@ var file_amor_amor_proto_rawDesc = []byte{
 	0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
 	0x73, 0x65, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x76, 0x31, 0x2f,
 	0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x7b, 0x69,
-	0x64, 0x7d, 0x12, 0x85, 0x01, 0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x12,
-	0x28, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f,
-	0x6d, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a,
-	0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72,
-	0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x76,
-	0x31, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f,
-	0x61, 0x6c, 0x6c, 0x3a, 0x72, 0x65, 0x61, 0x64, 0x30, 0x01, 0x12, 0x81, 0x01, 0x0a, 0x07, 0x47,
-	0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x27, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
-	0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31,
-	0x2e, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x28, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70,
-	0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f,
-	0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x1d, 0x12, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x72, 0x6f, 0x6f, 0x6d, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x88,
-	0x01, 0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x28, 0x2e, 0x70, 0x72,
-	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d,
-	0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61,
-	0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e,
-	0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x63,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x72, 0x6f, 0x6f, 0x6d,
-	0x2f, 0x61, 0x6c, 0x6c, 0x3a, 0x72, 0x65, 0x61, 0x64, 0x12, 0x89, 0x01, 0x0a, 0x0c, 0x52, 0x65,
-	0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x12, 0x2c, 0x2e, 0x70, 0x72, 0x6f,
-	0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f,
-	0x72, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65,
-	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65,
+	0x64, 0x7d, 0x12, 0x9c, 0x01, 0x0a, 0x0d, 0x47, 0x65, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x42, 0x79,
+	0x55, 0x73, 0x65, 0x72, 0x12, 0x2d, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d,
+	0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47,
+	0x65, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f,
+	0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65,
+	0x74, 0x48, 0x6f, 0x6d, 0x65, 0x42, 0x79, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x2c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x26, 0x12, 0x24, 0x2f, 0x76, 0x31,
+	0x2f, 0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x7b,
+	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x61, 0x6c, 0x6c, 0x3a, 0x72, 0x65, 0x61,
+	0x64, 0x12, 0x85, 0x01, 0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x28,
+	0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f, 0x6d,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65,
 	0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e,
-	0x76, 0x31, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x16, 0x3a,
-	0x01, 0x2a, 0x22, 0x11, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x72, 0x65, 0x67,
-	0x69, 0x73, 0x74, 0x65, 0x72, 0x12, 0x7d, 0x0a, 0x09, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73,
-	0x65, 0x72, 0x12, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72,
-	0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x6f, 0x67,
-	0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2a, 0x2e,
-	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e,
-	0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73, 0x65,
-	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82, 0xd3, 0xe4, 0x93, 0x02,
-	0x13, 0x3a, 0x01, 0x2a, 0x22, 0x0e, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x6c,
-	0x6f, 0x67, 0x69, 0x6e, 0x12, 0x8e, 0x01, 0x0a, 0x0d, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x74, 0x69,
-	0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x2d, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74,
-	0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31,
-	0x2e, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61,
+	0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x48, 0x6f, 0x6d, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x22, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1c, 0x12, 0x1a, 0x2f, 0x76, 0x31,
+	0x2f, 0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x61,
+	0x6c, 0x6c, 0x3a, 0x72, 0x65, 0x61, 0x64, 0x30, 0x01, 0x12, 0x81, 0x01, 0x0a, 0x07, 0x47, 0x65,
+	0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x27, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61,
 	0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e,
-	0x4c, 0x69, 0x73, 0x74, 0x55, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f,
-	0x76, 0x31, 0x2f, 0x75, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x2f, 0x61, 0x6c, 0x6c,
-	0x3a, 0x72, 0x65, 0x61, 0x64, 0x12, 0x71, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72,
-	0x12, 0x27, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61,
-	0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73,
-	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x70, 0x72, 0x6f, 0x6a,
+	0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28,
+	0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69,
+	0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x52, 0x6f, 0x6f, 0x6d,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d,
+	0x12, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x2f, 0x72, 0x6f, 0x6f, 0x6d, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x12, 0x88, 0x01,
+	0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x28, 0x2e, 0x70, 0x72, 0x6f,
+	0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f,
+	0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d,
+	0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c,
+	0x69, 0x73, 0x74, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x76, 0x31, 0x2f, 0x61, 0x63, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x64, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2f, 0x72, 0x6f, 0x6f, 0x6d, 0x2f,
+	0x61, 0x6c, 0x6c, 0x3a, 0x72, 0x65, 0x61, 0x64, 0x12, 0x89, 0x01, 0x0a, 0x0c, 0x52, 0x65, 0x67,
+	0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x12, 0x2c, 0x2e, 0x70, 0x72, 0x6f, 0x6a,
 	0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72,
-	0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x22, 0x13, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0d, 0x12, 0x0b, 0x2f, 0x76, 0x31,
-	0x2f, 0x6d, 0x65, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4e, 0x69, 0x6e, 0x6f, 0x6c, 0x69, 0x74, 0x6f, 0x2f,
-	0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x2d, 0x61, 0x70, 0x69, 0x2f,
-	0x61, 0x6d, 0x6f, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63,
+	0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76,
+	0x31, 0x2e, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1c, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x16, 0x3a, 0x01,
+	0x2a, 0x22, 0x11, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x72, 0x65, 0x67, 0x69,
+	0x73, 0x74, 0x65, 0x72, 0x12, 0x7d, 0x0a, 0x09, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73, 0x65,
+	0x72, 0x12, 0x29, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f,
+	0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x6f, 0x67, 0x69,
+	0x6e, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2a, 0x2e, 0x70,
+	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61,
+	0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x13,
+	0x3a, 0x01, 0x2a, 0x22, 0x0e, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73, 0x65, 0x72, 0x2f, 0x6c, 0x6f,
+	0x67, 0x69, 0x6e, 0x12, 0x8e, 0x01, 0x0a, 0x0d, 0x4c, 0x69, 0x73, 0x74, 0x55, 0x74, 0x69, 0x6c,
+	0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x2d, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61,
+	0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e,
+	0x4c, 0x69, 0x73, 0x74, 0x55, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x2e, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d,
+	0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x4c,
+	0x69, 0x73, 0x74, 0x55, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x1e, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x18, 0x12, 0x16, 0x2f, 0x76,
+	0x31, 0x2f, 0x75, 0x74, 0x69, 0x6c, 0x69, 0x74, 0x69, 0x65, 0x73, 0x2f, 0x61, 0x6c, 0x6c, 0x3a,
+	0x72, 0x65, 0x61, 0x64, 0x12, 0x71, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x12,
+	0x27, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70,
+	0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x28, 0x2e, 0x70, 0x72, 0x6f, 0x6a, 0x65,
+	0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x5f, 0x61, 0x70, 0x69, 0x2e, 0x61, 0x6d, 0x6f, 0x72, 0x2e,
+	0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x13, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x0d, 0x12, 0x0b, 0x2f, 0x76, 0x31, 0x2f,
+	0x6d, 0x65, 0x2f, 0x7b, 0x69, 0x64, 0x7d, 0x42, 0x2a, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75,
+	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x4e, 0x69, 0x6e, 0x6f, 0x6c, 0x69, 0x74, 0x6f, 0x2f, 0x70,
+	0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x61, 0x6d, 0x6f, 0x72, 0x2d, 0x61, 0x70, 0x69, 0x2f, 0x61,
+	0x6d, 0x6f, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1522,65 +1634,71 @@ func file_amor_amor_proto_rawDescGZIP() []byte {
 	return file_amor_amor_proto_rawDescData
 }
 
-var file_amor_amor_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_amor_amor_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_amor_amor_proto_goTypes = []interface{}{
-	(*GetUserRequest)(nil),        // 0: projectamor_api.amor.v1.GetUserRequest
-	(*GetUserResponse)(nil),       // 1: projectamor_api.amor.v1.GetUserResponse
-	(*ListUtilitiesRequest)(nil),  // 2: projectamor_api.amor.v1.ListUtilitiesRequest
-	(*ListUtilitiesResponse)(nil), // 3: projectamor_api.amor.v1.ListUtilitiesResponse
-	(*RegisterUserRequest)(nil),   // 4: projectamor_api.amor.v1.RegisterUserRequest
-	(*RegisterUserResponse)(nil),  // 5: projectamor_api.amor.v1.RegisterUserResponse
-	(*LoginUserRequest)(nil),      // 6: projectamor_api.amor.v1.LoginUserRequest
-	(*LoginUserResponse)(nil),     // 7: projectamor_api.amor.v1.LoginUserResponse
-	(*ListRoomResponse)(nil),      // 8: projectamor_api.amor.v1.ListRoomResponse
-	(*ListRoomRequest)(nil),       // 9: projectamor_api.amor.v1.ListRoomRequest
-	(*GetRoomResponse)(nil),       // 10: projectamor_api.amor.v1.GetRoomResponse
-	(*GetRoomRequest)(nil),        // 11: projectamor_api.amor.v1.GetRoomRequest
-	(*ListHomeRequest)(nil),       // 12: projectamor_api.amor.v1.ListHomeRequest
-	(*ListHomeResponse)(nil),      // 13: projectamor_api.amor.v1.ListHomeResponse
-	(*GetHomeRequest)(nil),        // 14: projectamor_api.amor.v1.GetHomeRequest
-	(*GetHomeResponse)(nil),       // 15: projectamor_api.amor.v1.GetHomeResponse
-	(*UpdateHomeRequest)(nil),     // 16: projectamor_api.amor.v1.UpdateHomeRequest
-	(*DeleteHomeRequest)(nil),     // 17: projectamor_api.amor.v1.DeleteHomeRequest
-	(*AddHomeRequest)(nil),        // 18: projectamor_api.amor.v1.AddHomeRequest
-	(*AddHomeResponse)(nil),       // 19: projectamor_api.amor.v1.AddHomeResponse
-	(*amor_var.Utilities)(nil),    // 20: Utilities
-	(*amor_var.Room)(nil),         // 21: Room
-	(*amor_var.Owner)(nil),        // 22: Owner
-	(*empty.Empty)(nil),           // 23: google.protobuf.Empty
+	(*GetHomeByUserRequest)(nil),   // 0: projectamor_api.amor.v1.GetHomeByUserRequest
+	(*GetHomeByUserResponse)(nil),  // 1: projectamor_api.amor.v1.GetHomeByUserResponse
+	(*GetUserRequest)(nil),         // 2: projectamor_api.amor.v1.GetUserRequest
+	(*GetUserResponse)(nil),        // 3: projectamor_api.amor.v1.GetUserResponse
+	(*ListUtilitiesRequest)(nil),   // 4: projectamor_api.amor.v1.ListUtilitiesRequest
+	(*ListUtilitiesResponse)(nil),  // 5: projectamor_api.amor.v1.ListUtilitiesResponse
+	(*RegisterUserRequest)(nil),    // 6: projectamor_api.amor.v1.RegisterUserRequest
+	(*RegisterUserResponse)(nil),   // 7: projectamor_api.amor.v1.RegisterUserResponse
+	(*LoginUserRequest)(nil),       // 8: projectamor_api.amor.v1.LoginUserRequest
+	(*LoginUserResponse)(nil),      // 9: projectamor_api.amor.v1.LoginUserResponse
+	(*ListRoomResponse)(nil),       // 10: projectamor_api.amor.v1.ListRoomResponse
+	(*ListRoomRequest)(nil),        // 11: projectamor_api.amor.v1.ListRoomRequest
+	(*GetRoomResponse)(nil),        // 12: projectamor_api.amor.v1.GetRoomResponse
+	(*GetRoomRequest)(nil),         // 13: projectamor_api.amor.v1.GetRoomRequest
+	(*ListHomeRequest)(nil),        // 14: projectamor_api.amor.v1.ListHomeRequest
+	(*ListHomeResponse)(nil),       // 15: projectamor_api.amor.v1.ListHomeResponse
+	(*GetHomeRequest)(nil),         // 16: projectamor_api.amor.v1.GetHomeRequest
+	(*GetHomeResponse)(nil),        // 17: projectamor_api.amor.v1.GetHomeResponse
+	(*UpdateHomeRequest)(nil),      // 18: projectamor_api.amor.v1.UpdateHomeRequest
+	(*DeleteHomeRequest)(nil),      // 19: projectamor_api.amor.v1.DeleteHomeRequest
+	(*AddHomeRequest)(nil),         // 20: projectamor_api.amor.v1.AddHomeRequest
+	(*AddHomeResponse)(nil),        // 21: projectamor_api.amor.v1.AddHomeResponse
+	(*amor_var.Accommodation)(nil), // 22: Accommodation
+	(*amor_var.Utilities)(nil),     // 23: Utilities
+	(*amor_var.Room)(nil),          // 24: Room
+	(*amor_var.Owner)(nil),         // 25: Owner
+	(*empty.Empty)(nil),            // 26: google.protobuf.Empty
 }
 var file_amor_amor_proto_depIdxs = []int32{
-	20, // 0: projectamor_api.amor.v1.ListUtilitiesResponse.utilities:type_name -> Utilities
-	21, // 1: projectamor_api.amor.v1.ListRoomResponse.room:type_name -> Room
-	22, // 2: projectamor_api.amor.v1.GetHomeResponse.owner:type_name -> Owner
-	20, // 3: projectamor_api.amor.v1.GetHomeResponse.utilities:type_name -> Utilities
-	18, // 4: projectamor_api.amor.v1.ProjectAmor.AddHome:input_type -> projectamor_api.amor.v1.AddHomeRequest
-	17, // 5: projectamor_api.amor.v1.ProjectAmor.DeleteHome:input_type -> projectamor_api.amor.v1.DeleteHomeRequest
-	16, // 6: projectamor_api.amor.v1.ProjectAmor.UpdateHome:input_type -> projectamor_api.amor.v1.UpdateHomeRequest
-	14, // 7: projectamor_api.amor.v1.ProjectAmor.GetHome:input_type -> projectamor_api.amor.v1.GetHomeRequest
-	12, // 8: projectamor_api.amor.v1.ProjectAmor.ListHome:input_type -> projectamor_api.amor.v1.ListHomeRequest
-	11, // 9: projectamor_api.amor.v1.ProjectAmor.GetRoom:input_type -> projectamor_api.amor.v1.GetRoomRequest
-	9,  // 10: projectamor_api.amor.v1.ProjectAmor.ListRoom:input_type -> projectamor_api.amor.v1.ListRoomRequest
-	4,  // 11: projectamor_api.amor.v1.ProjectAmor.RegisterUser:input_type -> projectamor_api.amor.v1.RegisterUserRequest
-	6,  // 12: projectamor_api.amor.v1.ProjectAmor.LoginUser:input_type -> projectamor_api.amor.v1.LoginUserRequest
-	2,  // 13: projectamor_api.amor.v1.ProjectAmor.ListUtilities:input_type -> projectamor_api.amor.v1.ListUtilitiesRequest
-	0,  // 14: projectamor_api.amor.v1.ProjectAmor.GetUser:input_type -> projectamor_api.amor.v1.GetUserRequest
-	19, // 15: projectamor_api.amor.v1.ProjectAmor.AddHome:output_type -> projectamor_api.amor.v1.AddHomeResponse
-	23, // 16: projectamor_api.amor.v1.ProjectAmor.DeleteHome:output_type -> google.protobuf.Empty
-	23, // 17: projectamor_api.amor.v1.ProjectAmor.UpdateHome:output_type -> google.protobuf.Empty
-	15, // 18: projectamor_api.amor.v1.ProjectAmor.GetHome:output_type -> projectamor_api.amor.v1.GetHomeResponse
-	13, // 19: projectamor_api.amor.v1.ProjectAmor.ListHome:output_type -> projectamor_api.amor.v1.ListHomeResponse
-	10, // 20: projectamor_api.amor.v1.ProjectAmor.GetRoom:output_type -> projectamor_api.amor.v1.GetRoomResponse
-	8,  // 21: projectamor_api.amor.v1.ProjectAmor.ListRoom:output_type -> projectamor_api.amor.v1.ListRoomResponse
-	5,  // 22: projectamor_api.amor.v1.ProjectAmor.RegisterUser:output_type -> projectamor_api.amor.v1.RegisterUserResponse
-	7,  // 23: projectamor_api.amor.v1.ProjectAmor.LoginUser:output_type -> projectamor_api.amor.v1.LoginUserResponse
-	3,  // 24: projectamor_api.amor.v1.ProjectAmor.ListUtilities:output_type -> projectamor_api.amor.v1.ListUtilitiesResponse
-	1,  // 25: projectamor_api.amor.v1.ProjectAmor.GetUser:output_type -> projectamor_api.amor.v1.GetUserResponse
-	15, // [15:26] is the sub-list for method output_type
-	4,  // [4:15] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	22, // 0: projectamor_api.amor.v1.GetHomeByUserResponse.accommodation:type_name -> Accommodation
+	23, // 1: projectamor_api.amor.v1.ListUtilitiesResponse.utilities:type_name -> Utilities
+	24, // 2: projectamor_api.amor.v1.ListRoomResponse.room:type_name -> Room
+	25, // 3: projectamor_api.amor.v1.GetHomeResponse.owner:type_name -> Owner
+	23, // 4: projectamor_api.amor.v1.GetHomeResponse.utilities:type_name -> Utilities
+	20, // 5: projectamor_api.amor.v1.ProjectAmor.AddHome:input_type -> projectamor_api.amor.v1.AddHomeRequest
+	19, // 6: projectamor_api.amor.v1.ProjectAmor.DeleteHome:input_type -> projectamor_api.amor.v1.DeleteHomeRequest
+	18, // 7: projectamor_api.amor.v1.ProjectAmor.UpdateHome:input_type -> projectamor_api.amor.v1.UpdateHomeRequest
+	16, // 8: projectamor_api.amor.v1.ProjectAmor.GetHome:input_type -> projectamor_api.amor.v1.GetHomeRequest
+	0,  // 9: projectamor_api.amor.v1.ProjectAmor.GetHomeByUser:input_type -> projectamor_api.amor.v1.GetHomeByUserRequest
+	14, // 10: projectamor_api.amor.v1.ProjectAmor.ListHome:input_type -> projectamor_api.amor.v1.ListHomeRequest
+	13, // 11: projectamor_api.amor.v1.ProjectAmor.GetRoom:input_type -> projectamor_api.amor.v1.GetRoomRequest
+	11, // 12: projectamor_api.amor.v1.ProjectAmor.ListRoom:input_type -> projectamor_api.amor.v1.ListRoomRequest
+	6,  // 13: projectamor_api.amor.v1.ProjectAmor.RegisterUser:input_type -> projectamor_api.amor.v1.RegisterUserRequest
+	8,  // 14: projectamor_api.amor.v1.ProjectAmor.LoginUser:input_type -> projectamor_api.amor.v1.LoginUserRequest
+	4,  // 15: projectamor_api.amor.v1.ProjectAmor.ListUtilities:input_type -> projectamor_api.amor.v1.ListUtilitiesRequest
+	2,  // 16: projectamor_api.amor.v1.ProjectAmor.GetUser:input_type -> projectamor_api.amor.v1.GetUserRequest
+	21, // 17: projectamor_api.amor.v1.ProjectAmor.AddHome:output_type -> projectamor_api.amor.v1.AddHomeResponse
+	26, // 18: projectamor_api.amor.v1.ProjectAmor.DeleteHome:output_type -> google.protobuf.Empty
+	26, // 19: projectamor_api.amor.v1.ProjectAmor.UpdateHome:output_type -> google.protobuf.Empty
+	17, // 20: projectamor_api.amor.v1.ProjectAmor.GetHome:output_type -> projectamor_api.amor.v1.GetHomeResponse
+	1,  // 21: projectamor_api.amor.v1.ProjectAmor.GetHomeByUser:output_type -> projectamor_api.amor.v1.GetHomeByUserResponse
+	15, // 22: projectamor_api.amor.v1.ProjectAmor.ListHome:output_type -> projectamor_api.amor.v1.ListHomeResponse
+	12, // 23: projectamor_api.amor.v1.ProjectAmor.GetRoom:output_type -> projectamor_api.amor.v1.GetRoomResponse
+	10, // 24: projectamor_api.amor.v1.ProjectAmor.ListRoom:output_type -> projectamor_api.amor.v1.ListRoomResponse
+	7,  // 25: projectamor_api.amor.v1.ProjectAmor.RegisterUser:output_type -> projectamor_api.amor.v1.RegisterUserResponse
+	9,  // 26: projectamor_api.amor.v1.ProjectAmor.LoginUser:output_type -> projectamor_api.amor.v1.LoginUserResponse
+	5,  // 27: projectamor_api.amor.v1.ProjectAmor.ListUtilities:output_type -> projectamor_api.amor.v1.ListUtilitiesResponse
+	3,  // 28: projectamor_api.amor.v1.ProjectAmor.GetUser:output_type -> projectamor_api.amor.v1.GetUserResponse
+	17, // [17:29] is the sub-list for method output_type
+	5,  // [5:17] is the sub-list for method input_type
+	5,  // [5:5] is the sub-list for extension type_name
+	5,  // [5:5] is the sub-list for extension extendee
+	0,  // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_amor_amor_proto_init() }
@@ -1590,7 +1708,7 @@ func file_amor_amor_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_amor_amor_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserRequest); i {
+			switch v := v.(*GetHomeByUserRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1602,7 +1720,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetUserResponse); i {
+			switch v := v.(*GetHomeByUserResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1614,7 +1732,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListUtilitiesRequest); i {
+			switch v := v.(*GetUserRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1626,7 +1744,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListUtilitiesResponse); i {
+			switch v := v.(*GetUserResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1638,7 +1756,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterUserRequest); i {
+			switch v := v.(*ListUtilitiesRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1650,7 +1768,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RegisterUserResponse); i {
+			switch v := v.(*ListUtilitiesResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1662,7 +1780,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginUserRequest); i {
+			switch v := v.(*RegisterUserRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1674,7 +1792,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LoginUserResponse); i {
+			switch v := v.(*RegisterUserResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1686,7 +1804,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListRoomResponse); i {
+			switch v := v.(*LoginUserRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1698,7 +1816,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListRoomRequest); i {
+			switch v := v.(*LoginUserResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1710,7 +1828,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRoomResponse); i {
+			switch v := v.(*ListRoomResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1722,7 +1840,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetRoomRequest); i {
+			switch v := v.(*ListRoomRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1734,7 +1852,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListHomeRequest); i {
+			switch v := v.(*GetRoomResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1746,7 +1864,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListHomeResponse); i {
+			switch v := v.(*GetRoomRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1758,7 +1876,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetHomeRequest); i {
+			switch v := v.(*ListHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1770,7 +1888,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetHomeResponse); i {
+			switch v := v.(*ListHomeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1782,7 +1900,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateHomeRequest); i {
+			switch v := v.(*GetHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1794,7 +1912,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteHomeRequest); i {
+			switch v := v.(*GetHomeResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1806,7 +1924,7 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AddHomeRequest); i {
+			switch v := v.(*UpdateHomeRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1818,6 +1936,30 @@ func file_amor_amor_proto_init() {
 			}
 		}
 		file_amor_amor_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteHomeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_amor_amor_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddHomeRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_amor_amor_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*AddHomeResponse); i {
 			case 0:
 				return &v.state
@@ -1836,7 +1978,7 @@ func file_amor_amor_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_amor_amor_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
