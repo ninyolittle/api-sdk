@@ -28,6 +28,8 @@ const (
 	ProjectAmor_ListHome_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
 	ProjectAmor_GetRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
 	ProjectAmor_ListRoom_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
+	ProjectAmor_UpdateRoom_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/UpdateRoom"
+	ProjectAmor_AddRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/AddRoom"
 	ProjectAmor_RegisterUser_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
 	ProjectAmor_LoginUser_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
 	ProjectAmor_ListUtilities_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
@@ -46,6 +48,8 @@ type ProjectAmorClient interface {
 	ListHome(ctx context.Context, in *ListHomeRequest, opts ...grpc.CallOption) (ProjectAmor_ListHomeClient, error)
 	GetRoom(ctx context.Context, in *GetRoomRequest, opts ...grpc.CallOption) (*GetRoomResponse, error)
 	ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListRoomResponse, error)
+	UpdateRoom(ctx context.Context, in *UpdateRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	AddRoom(ctx context.Context, in *AddRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 	ListUtilities(ctx context.Context, in *ListUtilitiesRequest, opts ...grpc.CallOption) (*ListUtilitiesResponse, error)
@@ -155,6 +159,24 @@ func (c *projectAmorClient) ListRoom(ctx context.Context, in *ListRoomRequest, o
 	return out, nil
 }
 
+func (c *projectAmorClient) UpdateRoom(ctx context.Context, in *UpdateRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_UpdateRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectAmorClient) AddRoom(ctx context.Context, in *AddRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_AddRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *projectAmorClient) RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error) {
 	out := new(RegisterUserResponse)
 	err := c.cc.Invoke(ctx, ProjectAmor_RegisterUser_FullMethodName, in, out, opts...)
@@ -203,6 +225,8 @@ type ProjectAmorServer interface {
 	ListHome(*ListHomeRequest, ProjectAmor_ListHomeServer) error
 	GetRoom(context.Context, *GetRoomRequest) (*GetRoomResponse, error)
 	ListRoom(context.Context, *ListRoomRequest) (*ListRoomResponse, error)
+	UpdateRoom(context.Context, *UpdateRoomRequest) (*empty.Empty, error)
+	AddRoom(context.Context, *AddRoomRequest) (*empty.Empty, error)
 	RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error)
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
 	ListUtilities(context.Context, *ListUtilitiesRequest) (*ListUtilitiesResponse, error)
@@ -237,6 +261,12 @@ func (UnimplementedProjectAmorServer) GetRoom(context.Context, *GetRoomRequest) 
 }
 func (UnimplementedProjectAmorServer) ListRoom(context.Context, *ListRoomRequest) (*ListRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListRoom not implemented")
+}
+func (UnimplementedProjectAmorServer) UpdateRoom(context.Context, *UpdateRoomRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoom not implemented")
+}
+func (UnimplementedProjectAmorServer) AddRoom(context.Context, *AddRoomRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddRoom not implemented")
 }
 func (UnimplementedProjectAmorServer) RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterUser not implemented")
@@ -410,6 +440,42 @@ func _ProjectAmor_ListRoom_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_UpdateRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).UpdateRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_UpdateRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).UpdateRoom(ctx, req.(*UpdateRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectAmor_AddRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).AddRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_AddRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).AddRoom(ctx, req.(*AddRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ProjectAmor_RegisterUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterUserRequest)
 	if err := dec(in); err != nil {
@@ -516,6 +582,14 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListRoom",
 			Handler:    _ProjectAmor_ListRoom_Handler,
+		},
+		{
+			MethodName: "UpdateRoom",
+			Handler:    _ProjectAmor_UpdateRoom_Handler,
+		},
+		{
+			MethodName: "AddRoom",
+			Handler:    _ProjectAmor_AddRoom_Handler,
 		},
 		{
 			MethodName: "RegisterUser",
