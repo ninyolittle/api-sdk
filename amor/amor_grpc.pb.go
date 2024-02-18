@@ -30,6 +30,7 @@ const (
 	ProjectAmor_ListRoom_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
 	ProjectAmor_UpdateRoom_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/UpdateRoom"
 	ProjectAmor_AddRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/AddRoom"
+	ProjectAmor_DeleteRoom_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/DeleteRoom"
 	ProjectAmor_RegisterUser_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
 	ProjectAmor_LoginUser_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
 	ProjectAmor_ListUtilities_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
@@ -50,6 +51,7 @@ type ProjectAmorClient interface {
 	ListRoom(ctx context.Context, in *ListRoomRequest, opts ...grpc.CallOption) (*ListRoomResponse, error)
 	UpdateRoom(ctx context.Context, in *UpdateRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	AddRoom(ctx context.Context, in *AddRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteRoom(ctx context.Context, in *DeleteRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 	ListUtilities(ctx context.Context, in *ListUtilitiesRequest, opts ...grpc.CallOption) (*ListUtilitiesResponse, error)
@@ -177,6 +179,15 @@ func (c *projectAmorClient) AddRoom(ctx context.Context, in *AddRoomRequest, opt
 	return out, nil
 }
 
+func (c *projectAmorClient) DeleteRoom(ctx context.Context, in *DeleteRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_DeleteRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *projectAmorClient) RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error) {
 	out := new(RegisterUserResponse)
 	err := c.cc.Invoke(ctx, ProjectAmor_RegisterUser_FullMethodName, in, out, opts...)
@@ -227,6 +238,7 @@ type ProjectAmorServer interface {
 	ListRoom(context.Context, *ListRoomRequest) (*ListRoomResponse, error)
 	UpdateRoom(context.Context, *UpdateRoomRequest) (*empty.Empty, error)
 	AddRoom(context.Context, *AddRoomRequest) (*empty.Empty, error)
+	DeleteRoom(context.Context, *DeleteRoomRequest) (*empty.Empty, error)
 	RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error)
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
 	ListUtilities(context.Context, *ListUtilitiesRequest) (*ListUtilitiesResponse, error)
@@ -267,6 +279,9 @@ func (UnimplementedProjectAmorServer) UpdateRoom(context.Context, *UpdateRoomReq
 }
 func (UnimplementedProjectAmorServer) AddRoom(context.Context, *AddRoomRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddRoom not implemented")
+}
+func (UnimplementedProjectAmorServer) DeleteRoom(context.Context, *DeleteRoomRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoom not implemented")
 }
 func (UnimplementedProjectAmorServer) RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterUser not implemented")
@@ -476,6 +491,24 @@ func _ProjectAmor_AddRoom_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_DeleteRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).DeleteRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_DeleteRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).DeleteRoom(ctx, req.(*DeleteRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ProjectAmor_RegisterUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterUserRequest)
 	if err := dec(in); err != nil {
@@ -590,6 +623,10 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddRoom",
 			Handler:    _ProjectAmor_AddRoom_Handler,
+		},
+		{
+			MethodName: "DeleteRoom",
+			Handler:    _ProjectAmor_DeleteRoom_Handler,
 		},
 		{
 			MethodName: "RegisterUser",
