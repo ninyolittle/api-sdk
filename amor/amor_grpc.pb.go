@@ -20,21 +20,23 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ProjectAmor_AddHome_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/AddHome"
-	ProjectAmor_DeleteHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/DeleteHome"
-	ProjectAmor_UpdateHome_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/UpdateHome"
-	ProjectAmor_GetHome_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
-	ProjectAmor_GetHomeByUser_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser"
-	ProjectAmor_ListHome_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
-	ProjectAmor_GetRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
-	ProjectAmor_ListRoom_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
-	ProjectAmor_UpdateRoom_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/UpdateRoom"
-	ProjectAmor_AddRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/AddRoom"
-	ProjectAmor_DeleteRoom_FullMethodName    = "/projectamor_api.amor.v1.ProjectAmor/DeleteRoom"
-	ProjectAmor_RegisterUser_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
-	ProjectAmor_LoginUser_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
-	ProjectAmor_ListUtilities_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
-	ProjectAmor_GetUser_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/GetUser"
+	ProjectAmor_AddHome_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/AddHome"
+	ProjectAmor_DeleteHome_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/DeleteHome"
+	ProjectAmor_UpdateHome_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/UpdateHome"
+	ProjectAmor_GetHome_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
+	ProjectAmor_GetHomeByUser_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser"
+	ProjectAmor_ListHome_FullMethodName          = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
+	ProjectAmor_GetRoom_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
+	ProjectAmor_ListRoom_FullMethodName          = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
+	ProjectAmor_UpdateRoom_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/UpdateRoom"
+	ProjectAmor_AddRoom_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/AddRoom"
+	ProjectAmor_DeleteRoom_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/DeleteRoom"
+	ProjectAmor_RegisterUser_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
+	ProjectAmor_LoginUser_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
+	ProjectAmor_ListUtilities_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
+	ProjectAmor_GetUser_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/GetUser"
+	ProjectAmor_ReserveRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/ReserveRoom"
+	ProjectAmor_RemoveReserveRoom_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -56,6 +58,8 @@ type ProjectAmorClient interface {
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
 	ListUtilities(ctx context.Context, in *ListUtilitiesRequest, opts ...grpc.CallOption) (*ListUtilitiesResponse, error)
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	ReserveRoom(ctx context.Context, in *ReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	RemoveReserveRoom(ctx context.Context, in *RemoveReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type projectAmorClient struct {
@@ -224,6 +228,24 @@ func (c *projectAmorClient) GetUser(ctx context.Context, in *GetUserRequest, opt
 	return out, nil
 }
 
+func (c *projectAmorClient) ReserveRoom(ctx context.Context, in *ReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_ReserveRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectAmorClient) RemoveReserveRoom(ctx context.Context, in *RemoveReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_RemoveReserveRoom_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -243,6 +265,8 @@ type ProjectAmorServer interface {
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
 	ListUtilities(context.Context, *ListUtilitiesRequest) (*ListUtilitiesResponse, error)
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	ReserveRoom(context.Context, *ReserveRoomRequest) (*empty.Empty, error)
+	RemoveReserveRoom(context.Context, *RemoveReserveRoomRequest) (*empty.Empty, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -294,6 +318,12 @@ func (UnimplementedProjectAmorServer) ListUtilities(context.Context, *ListUtilit
 }
 func (UnimplementedProjectAmorServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedProjectAmorServer) ReserveRoom(context.Context, *ReserveRoomRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReserveRoom not implemented")
+}
+func (UnimplementedProjectAmorServer) RemoveReserveRoom(context.Context, *RemoveReserveRoomRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveReserveRoom not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -581,6 +611,42 @@ func _ProjectAmor_GetUser_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_ReserveRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReserveRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).ReserveRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_ReserveRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).ReserveRoom(ctx, req.(*ReserveRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectAmor_RemoveReserveRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveReserveRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).RemoveReserveRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_RemoveReserveRoom_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).RemoveReserveRoom(ctx, req.(*RemoveReserveRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -643,6 +709,14 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _ProjectAmor_GetUser_Handler,
+		},
+		{
+			MethodName: "ReserveRoom",
+			Handler:    _ProjectAmor_ReserveRoom_Handler,
+		},
+		{
+			MethodName: "RemoveReserveRoom",
+			Handler:    _ProjectAmor_RemoveReserveRoom_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
