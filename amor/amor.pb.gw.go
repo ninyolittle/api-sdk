@@ -628,7 +628,7 @@ func local_request_ProjectAmor_CreateNotification_0(ctx context.Context, marshal
 
 }
 
-func request_ProjectAmor_ListNotifications_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (ProjectAmor_ListNotificationsClient, runtime.ServerMetadata, error) {
+func request_ProjectAmor_ListNotifications_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var metadata runtime.ServerMetadata
 	stream, err := client.ListNotifications(ctx)
 	if err != nil {
@@ -636,39 +636,40 @@ func request_ProjectAmor_ListNotifications_0(ctx context.Context, marshaler runt
 		return nil, metadata, err
 	}
 	dec := marshaler.NewDecoder(req.Body)
-	handleSend := func() error {
+	for {
 		var protoReq ListNotificationsRequest
-		err := dec.Decode(&protoReq)
+		err = dec.Decode(&protoReq)
 		if err == io.EOF {
-			return err
+			break
 		}
 		if err != nil {
 			grpclog.Infof("Failed to decode request: %v", err)
-			return err
+			return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 		}
-		if err := stream.Send(&protoReq); err != nil {
-			grpclog.Infof("Failed to send request: %v", err)
-			return err
-		}
-		return nil
-	}
-	go func() {
-		for {
-			if err := handleSend(); err != nil {
+		if err = stream.Send(&protoReq); err != nil {
+			if err == io.EOF {
 				break
 			}
+			grpclog.Infof("Failed to send request: %v", err)
+			return nil, metadata, err
 		}
-		if err := stream.CloseSend(); err != nil {
-			grpclog.Infof("Failed to terminate client stream: %v", err)
-		}
-	}()
+	}
+
+	if err := stream.CloseSend(); err != nil {
+		grpclog.Infof("Failed to terminate client stream: %v", err)
+		return nil, metadata, err
+	}
 	header, err := stream.Header()
 	if err != nil {
 		grpclog.Infof("Failed to get header from client: %v", err)
 		return nil, metadata, err
 	}
 	metadata.HeaderMD = header
-	return stream, metadata, nil
+
+	msg, err := stream.CloseAndRecv()
+	metadata.TrailerMD = stream.Trailer()
+	return msg, metadata, err
+
 }
 
 // RegisterProjectAmorHandlerServer registers the http handlers for service ProjectAmor to "mux".
@@ -1571,7 +1572,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_ListNotifications_0(annotatedContext, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_ListNotifications_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1655,5 +1656,5 @@ var (
 
 	forward_ProjectAmor_CreateNotification_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_ListNotifications_0 = runtime.ForwardResponseStream
+	forward_ProjectAmor_ListNotifications_0 = runtime.ForwardResponseMessage
 )

@@ -270,7 +270,7 @@ func (c *projectAmorClient) ListNotifications(ctx context.Context, opts ...grpc.
 
 type ProjectAmor_ListNotificationsClient interface {
 	Send(*ListNotificationsRequest) error
-	Recv() (*ListNotificationsResponse, error)
+	CloseAndRecv() (*ListNotificationsResponse, error)
 	grpc.ClientStream
 }
 
@@ -282,7 +282,10 @@ func (x *projectAmorListNotificationsClient) Send(m *ListNotificationsRequest) e
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *projectAmorListNotificationsClient) Recv() (*ListNotificationsResponse, error) {
+func (x *projectAmorListNotificationsClient) CloseAndRecv() (*ListNotificationsResponse, error) {
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
 	m := new(ListNotificationsResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -722,7 +725,7 @@ func _ProjectAmor_ListNotifications_Handler(srv interface{}, stream grpc.ServerS
 }
 
 type ProjectAmor_ListNotificationsServer interface {
-	Send(*ListNotificationsResponse) error
+	SendAndClose(*ListNotificationsResponse) error
 	Recv() (*ListNotificationsRequest, error)
 	grpc.ServerStream
 }
@@ -731,7 +734,7 @@ type projectAmorListNotificationsServer struct {
 	grpc.ServerStream
 }
 
-func (x *projectAmorListNotificationsServer) Send(m *ListNotificationsResponse) error {
+func (x *projectAmorListNotificationsServer) SendAndClose(m *ListNotificationsResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -828,7 +831,6 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "ListNotifications",
 			Handler:       _ProjectAmor_ListNotifications_Handler,
-			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},
