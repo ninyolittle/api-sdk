@@ -20,23 +20,25 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	ProjectAmor_AddHome_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/AddHome"
-	ProjectAmor_DeleteHome_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/DeleteHome"
-	ProjectAmor_UpdateHome_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/UpdateHome"
-	ProjectAmor_GetHome_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
-	ProjectAmor_GetHomeByUser_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser"
-	ProjectAmor_ListHome_FullMethodName          = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
-	ProjectAmor_GetRoom_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
-	ProjectAmor_ListRoom_FullMethodName          = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
-	ProjectAmor_UpdateRoom_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/UpdateRoom"
-	ProjectAmor_AddRoom_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/AddRoom"
-	ProjectAmor_DeleteRoom_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/DeleteRoom"
-	ProjectAmor_RegisterUser_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
-	ProjectAmor_LoginUser_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
-	ProjectAmor_ListUtilities_FullMethodName     = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
-	ProjectAmor_GetUser_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/GetUser"
-	ProjectAmor_ReserveRoom_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/ReserveRoom"
-	ProjectAmor_RemoveReserveRoom_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom"
+	ProjectAmor_AddHome_FullMethodName            = "/projectamor_api.amor.v1.ProjectAmor/AddHome"
+	ProjectAmor_DeleteHome_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/DeleteHome"
+	ProjectAmor_UpdateHome_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/UpdateHome"
+	ProjectAmor_GetHome_FullMethodName            = "/projectamor_api.amor.v1.ProjectAmor/GetHome"
+	ProjectAmor_GetHomeByUser_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser"
+	ProjectAmor_ListHome_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/ListHome"
+	ProjectAmor_GetRoom_FullMethodName            = "/projectamor_api.amor.v1.ProjectAmor/GetRoom"
+	ProjectAmor_ListRoom_FullMethodName           = "/projectamor_api.amor.v1.ProjectAmor/ListRoom"
+	ProjectAmor_UpdateRoom_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/UpdateRoom"
+	ProjectAmor_AddRoom_FullMethodName            = "/projectamor_api.amor.v1.ProjectAmor/AddRoom"
+	ProjectAmor_DeleteRoom_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/DeleteRoom"
+	ProjectAmor_RegisterUser_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
+	ProjectAmor_LoginUser_FullMethodName          = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
+	ProjectAmor_ListUtilities_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
+	ProjectAmor_GetUser_FullMethodName            = "/projectamor_api.amor.v1.ProjectAmor/GetUser"
+	ProjectAmor_ReserveRoom_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/ReserveRoom"
+	ProjectAmor_RemoveReserveRoom_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom"
+	ProjectAmor_CreateNotification_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/CreateNotification"
+	ProjectAmor_ListNotifications_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/ListNotifications"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -60,6 +62,8 @@ type ProjectAmorClient interface {
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	ReserveRoom(ctx context.Context, in *ReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	RemoveReserveRoom(ctx context.Context, in *RemoveReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	CreateNotification(ctx context.Context, in *CreateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ListNotifications(ctx context.Context, in *ListNotificationsRequest, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error)
 }
 
 type projectAmorClient struct {
@@ -246,6 +250,47 @@ func (c *projectAmorClient) RemoveReserveRoom(ctx context.Context, in *RemoveRes
 	return out, nil
 }
 
+func (c *projectAmorClient) CreateNotification(ctx context.Context, in *CreateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_CreateNotification_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *projectAmorClient) ListNotifications(ctx context.Context, in *ListNotificationsRequest, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error) {
+	stream, err := c.cc.NewStream(ctx, &ProjectAmor_ServiceDesc.Streams[1], ProjectAmor_ListNotifications_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &projectAmorListNotificationsClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type ProjectAmor_ListNotificationsClient interface {
+	Recv() (*ListNotificationsResponse, error)
+	grpc.ClientStream
+}
+
+type projectAmorListNotificationsClient struct {
+	grpc.ClientStream
+}
+
+func (x *projectAmorListNotificationsClient) Recv() (*ListNotificationsResponse, error) {
+	m := new(ListNotificationsResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -267,6 +312,8 @@ type ProjectAmorServer interface {
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	ReserveRoom(context.Context, *ReserveRoomRequest) (*empty.Empty, error)
 	RemoveReserveRoom(context.Context, *RemoveReserveRoomRequest) (*empty.Empty, error)
+	CreateNotification(context.Context, *CreateNotificationRequest) (*empty.Empty, error)
+	ListNotifications(*ListNotificationsRequest, ProjectAmor_ListNotificationsServer) error
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -324,6 +371,12 @@ func (UnimplementedProjectAmorServer) ReserveRoom(context.Context, *ReserveRoomR
 }
 func (UnimplementedProjectAmorServer) RemoveReserveRoom(context.Context, *RemoveReserveRoomRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveReserveRoom not implemented")
+}
+func (UnimplementedProjectAmorServer) CreateNotification(context.Context, *CreateNotificationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNotification not implemented")
+}
+func (UnimplementedProjectAmorServer) ListNotifications(*ListNotificationsRequest, ProjectAmor_ListNotificationsServer) error {
+	return status.Errorf(codes.Unimplemented, "method ListNotifications not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -647,6 +700,45 @@ func _ProjectAmor_RemoveReserveRoom_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_CreateNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateNotificationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).CreateNotification(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_CreateNotification_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).CreateNotification(ctx, req.(*CreateNotificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ProjectAmor_ListNotifications_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListNotificationsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ProjectAmorServer).ListNotifications(m, &projectAmorListNotificationsServer{stream})
+}
+
+type ProjectAmor_ListNotificationsServer interface {
+	Send(*ListNotificationsResponse) error
+	grpc.ServerStream
+}
+
+type projectAmorListNotificationsServer struct {
+	grpc.ServerStream
+}
+
+func (x *projectAmorListNotificationsServer) Send(m *ListNotificationsResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -718,11 +810,20 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "RemoveReserveRoom",
 			Handler:    _ProjectAmor_RemoveReserveRoom_Handler,
 		},
+		{
+			MethodName: "CreateNotification",
+			Handler:    _ProjectAmor_CreateNotification_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "ListHome",
 			Handler:       _ProjectAmor_ListHome_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "ListNotifications",
+			Handler:       _ProjectAmor_ListNotifications_Handler,
 			ServerStreams: true,
 		},
 	},
