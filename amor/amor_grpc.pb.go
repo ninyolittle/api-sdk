@@ -63,7 +63,7 @@ type ProjectAmorClient interface {
 	ReserveRoom(ctx context.Context, in *ReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	RemoveReserveRoom(ctx context.Context, in *RemoveReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	CreateNotification(ctx context.Context, in *CreateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	ListNotifications(ctx context.Context, in *ListNotificationsRequest, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error)
+	ListNotifications(ctx context.Context, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error)
 }
 
 type projectAmorClient struct {
@@ -259,28 +259,27 @@ func (c *projectAmorClient) CreateNotification(ctx context.Context, in *CreateNo
 	return out, nil
 }
 
-func (c *projectAmorClient) ListNotifications(ctx context.Context, in *ListNotificationsRequest, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error) {
+func (c *projectAmorClient) ListNotifications(ctx context.Context, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error) {
 	stream, err := c.cc.NewStream(ctx, &ProjectAmor_ServiceDesc.Streams[1], ProjectAmor_ListNotifications_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
 	x := &projectAmorListNotificationsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
 	return x, nil
 }
 
 type ProjectAmor_ListNotificationsClient interface {
+	Send(*ListNotificationsRequest) error
 	Recv() (*ListNotificationsResponse, error)
 	grpc.ClientStream
 }
 
 type projectAmorListNotificationsClient struct {
 	grpc.ClientStream
+}
+
+func (x *projectAmorListNotificationsClient) Send(m *ListNotificationsRequest) error {
+	return x.ClientStream.SendMsg(m)
 }
 
 func (x *projectAmorListNotificationsClient) Recv() (*ListNotificationsResponse, error) {
@@ -313,7 +312,7 @@ type ProjectAmorServer interface {
 	ReserveRoom(context.Context, *ReserveRoomRequest) (*empty.Empty, error)
 	RemoveReserveRoom(context.Context, *RemoveReserveRoomRequest) (*empty.Empty, error)
 	CreateNotification(context.Context, *CreateNotificationRequest) (*empty.Empty, error)
-	ListNotifications(*ListNotificationsRequest, ProjectAmor_ListNotificationsServer) error
+	ListNotifications(ProjectAmor_ListNotificationsServer) error
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -375,7 +374,7 @@ func (UnimplementedProjectAmorServer) RemoveReserveRoom(context.Context, *Remove
 func (UnimplementedProjectAmorServer) CreateNotification(context.Context, *CreateNotificationRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateNotification not implemented")
 }
-func (UnimplementedProjectAmorServer) ListNotifications(*ListNotificationsRequest, ProjectAmor_ListNotificationsServer) error {
+func (UnimplementedProjectAmorServer) ListNotifications(ProjectAmor_ListNotificationsServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListNotifications not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
@@ -719,15 +718,12 @@ func _ProjectAmor_CreateNotification_Handler(srv interface{}, ctx context.Contex
 }
 
 func _ProjectAmor_ListNotifications_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(ListNotificationsRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(ProjectAmorServer).ListNotifications(m, &projectAmorListNotificationsServer{stream})
+	return srv.(ProjectAmorServer).ListNotifications(&projectAmorListNotificationsServer{stream})
 }
 
 type ProjectAmor_ListNotificationsServer interface {
 	Send(*ListNotificationsResponse) error
+	Recv() (*ListNotificationsRequest, error)
 	grpc.ServerStream
 }
 
@@ -737,6 +733,14 @@ type projectAmorListNotificationsServer struct {
 
 func (x *projectAmorListNotificationsServer) Send(m *ListNotificationsResponse) error {
 	return x.ServerStream.SendMsg(m)
+}
+
+func (x *projectAmorListNotificationsServer) Recv() (*ListNotificationsRequest, error) {
+	m := new(ListNotificationsRequest)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
@@ -825,6 +829,7 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 			StreamName:    "ListNotifications",
 			Handler:       _ProjectAmor_ListNotifications_Handler,
 			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "amor/amor.proto",

@@ -628,32 +628,47 @@ func local_request_ProjectAmor_CreateNotification_0(ctx context.Context, marshal
 
 }
 
-var (
-	filter_ProjectAmor_ListNotifications_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
 func request_ProjectAmor_ListNotifications_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (ProjectAmor_ListNotificationsClient, runtime.ServerMetadata, error) {
-	var protoReq ListNotificationsRequest
 	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_ListNotifications_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	stream, err := client.ListNotifications(ctx, &protoReq)
+	stream, err := client.ListNotifications(ctx)
 	if err != nil {
+		grpclog.Infof("Failed to start streaming: %v", err)
 		return nil, metadata, err
 	}
+	dec := marshaler.NewDecoder(req.Body)
+	handleSend := func() error {
+		var protoReq ListNotificationsRequest
+		err := dec.Decode(&protoReq)
+		if err == io.EOF {
+			return err
+		}
+		if err != nil {
+			grpclog.Infof("Failed to decode request: %v", err)
+			return err
+		}
+		if err := stream.Send(&protoReq); err != nil {
+			grpclog.Infof("Failed to send request: %v", err)
+			return err
+		}
+		return nil
+	}
+	go func() {
+		for {
+			if err := handleSend(); err != nil {
+				break
+			}
+		}
+		if err := stream.CloseSend(); err != nil {
+			grpclog.Infof("Failed to terminate client stream: %v", err)
+		}
+	}()
 	header, err := stream.Header()
 	if err != nil {
+		grpclog.Infof("Failed to get header from client: %v", err)
 		return nil, metadata, err
 	}
 	metadata.HeaderMD = header
 	return stream, metadata, nil
-
 }
 
 // RegisterProjectAmorHandlerServer registers the http handlers for service ProjectAmor to "mux".
