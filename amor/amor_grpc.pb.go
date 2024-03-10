@@ -39,6 +39,7 @@ const (
 	ProjectAmor_RemoveReserveRoom_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom"
 	ProjectAmor_CreateNotification_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/CreateNotification"
 	ProjectAmor_ListNotifications_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/ListNotifications"
+	ProjectAmor_UpdateNotification_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/UpdateNotification"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -64,6 +65,7 @@ type ProjectAmorClient interface {
 	RemoveReserveRoom(ctx context.Context, in *RemoveReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	CreateNotification(ctx context.Context, in *CreateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	ListNotifications(ctx context.Context, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error)
+	UpdateNotification(ctx context.Context, in *UpdateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 }
 
 type projectAmorClient struct {
@@ -293,6 +295,15 @@ func (x *projectAmorListNotificationsClient) CloseAndRecv() (*ListNotificationsR
 	return m, nil
 }
 
+func (c *projectAmorClient) UpdateNotification(ctx context.Context, in *UpdateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, ProjectAmor_UpdateNotification_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -316,6 +327,7 @@ type ProjectAmorServer interface {
 	RemoveReserveRoom(context.Context, *RemoveReserveRoomRequest) (*empty.Empty, error)
 	CreateNotification(context.Context, *CreateNotificationRequest) (*empty.Empty, error)
 	ListNotifications(ProjectAmor_ListNotificationsServer) error
+	UpdateNotification(context.Context, *UpdateNotificationRequest) (*empty.Empty, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -379,6 +391,9 @@ func (UnimplementedProjectAmorServer) CreateNotification(context.Context, *Creat
 }
 func (UnimplementedProjectAmorServer) ListNotifications(ProjectAmor_ListNotificationsServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListNotifications not implemented")
+}
+func (UnimplementedProjectAmorServer) UpdateNotification(context.Context, *UpdateNotificationRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateNotification not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -746,6 +761,24 @@ func (x *projectAmorListNotificationsServer) Recv() (*ListNotificationsRequest, 
 	return m, nil
 }
 
+func _ProjectAmor_UpdateNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateNotificationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).UpdateNotification(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_UpdateNotification_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).UpdateNotification(ctx, req.(*UpdateNotificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -820,6 +853,10 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateNotification",
 			Handler:    _ProjectAmor_CreateNotification_Handler,
+		},
+		{
+			MethodName: "UpdateNotification",
+			Handler:    _ProjectAmor_UpdateNotification_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
