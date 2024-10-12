@@ -33,6 +33,7 @@ const (
 	ProjectAmor_DeleteRoom_FullMethodName         = "/projectamor_api.amor.v1.ProjectAmor/DeleteRoom"
 	ProjectAmor_RegisterUser_FullMethodName       = "/projectamor_api.amor.v1.ProjectAmor/RegisterUser"
 	ProjectAmor_LoginUser_FullMethodName          = "/projectamor_api.amor.v1.ProjectAmor/LoginUser"
+	ProjectAmor_ResetPassword_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ResetPassword"
 	ProjectAmor_ListUtilities_FullMethodName      = "/projectamor_api.amor.v1.ProjectAmor/ListUtilities"
 	ProjectAmor_GetUser_FullMethodName            = "/projectamor_api.amor.v1.ProjectAmor/GetUser"
 	ProjectAmor_ReserveRoom_FullMethodName        = "/projectamor_api.amor.v1.ProjectAmor/ReserveRoom"
@@ -40,6 +41,7 @@ const (
 	ProjectAmor_CreateNotification_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/CreateNotification"
 	ProjectAmor_ListNotifications_FullMethodName  = "/projectamor_api.amor.v1.ProjectAmor/ListNotifications"
 	ProjectAmor_UpdateNotification_FullMethodName = "/projectamor_api.amor.v1.ProjectAmor/UpdateNotification"
+	ProjectAmor_ListReservations_FullMethodName   = "/projectamor_api.amor.v1.ProjectAmor/ListReservations"
 )
 
 // ProjectAmorClient is the client API for ProjectAmor service.
@@ -59,6 +61,7 @@ type ProjectAmorClient interface {
 	DeleteRoom(ctx context.Context, in *DeleteRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	RegisterUser(ctx context.Context, in *RegisterUserRequest, opts ...grpc.CallOption) (*RegisterUserResponse, error)
 	LoginUser(ctx context.Context, in *LoginUserRequest, opts ...grpc.CallOption) (*LoginUserResponse, error)
+	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
 	ListUtilities(ctx context.Context, in *ListUtilitiesRequest, opts ...grpc.CallOption) (*ListUtilitiesResponse, error)
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
 	ReserveRoom(ctx context.Context, in *ReserveRoomRequest, opts ...grpc.CallOption) (*empty.Empty, error)
@@ -66,6 +69,7 @@ type ProjectAmorClient interface {
 	CreateNotification(ctx context.Context, in *CreateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	ListNotifications(ctx context.Context, in *ListNotificationsRequest, opts ...grpc.CallOption) (ProjectAmor_ListNotificationsClient, error)
 	UpdateNotification(ctx context.Context, in *UpdateNotificationRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	ListReservations(ctx context.Context, in *ListReservationsRequest, opts ...grpc.CallOption) (*ListReservationsResponse, error)
 }
 
 type projectAmorClient struct {
@@ -216,6 +220,15 @@ func (c *projectAmorClient) LoginUser(ctx context.Context, in *LoginUserRequest,
 	return out, nil
 }
 
+func (c *projectAmorClient) ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error) {
+	out := new(ResetPasswordResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_ResetPassword_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *projectAmorClient) ListUtilities(ctx context.Context, in *ListUtilitiesRequest, opts ...grpc.CallOption) (*ListUtilitiesResponse, error) {
 	out := new(ListUtilitiesResponse)
 	err := c.cc.Invoke(ctx, ProjectAmor_ListUtilities_FullMethodName, in, out, opts...)
@@ -302,6 +315,15 @@ func (c *projectAmorClient) UpdateNotification(ctx context.Context, in *UpdateNo
 	return out, nil
 }
 
+func (c *projectAmorClient) ListReservations(ctx context.Context, in *ListReservationsRequest, opts ...grpc.CallOption) (*ListReservationsResponse, error) {
+	out := new(ListReservationsResponse)
+	err := c.cc.Invoke(ctx, ProjectAmor_ListReservations_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProjectAmorServer is the server API for ProjectAmor service.
 // All implementations must embed UnimplementedProjectAmorServer
 // for forward compatibility
@@ -319,6 +341,7 @@ type ProjectAmorServer interface {
 	DeleteRoom(context.Context, *DeleteRoomRequest) (*empty.Empty, error)
 	RegisterUser(context.Context, *RegisterUserRequest) (*RegisterUserResponse, error)
 	LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error)
+	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
 	ListUtilities(context.Context, *ListUtilitiesRequest) (*ListUtilitiesResponse, error)
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
 	ReserveRoom(context.Context, *ReserveRoomRequest) (*empty.Empty, error)
@@ -326,6 +349,7 @@ type ProjectAmorServer interface {
 	CreateNotification(context.Context, *CreateNotificationRequest) (*empty.Empty, error)
 	ListNotifications(*ListNotificationsRequest, ProjectAmor_ListNotificationsServer) error
 	UpdateNotification(context.Context, *UpdateNotificationRequest) (*empty.Empty, error)
+	ListReservations(context.Context, *ListReservationsRequest) (*ListReservationsResponse, error)
 	mustEmbedUnimplementedProjectAmorServer()
 }
 
@@ -372,6 +396,9 @@ func (UnimplementedProjectAmorServer) RegisterUser(context.Context, *RegisterUse
 func (UnimplementedProjectAmorServer) LoginUser(context.Context, *LoginUserRequest) (*LoginUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginUser not implemented")
 }
+func (UnimplementedProjectAmorServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
+}
 func (UnimplementedProjectAmorServer) ListUtilities(context.Context, *ListUtilitiesRequest) (*ListUtilitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListUtilities not implemented")
 }
@@ -392,6 +419,9 @@ func (UnimplementedProjectAmorServer) ListNotifications(*ListNotificationsReques
 }
 func (UnimplementedProjectAmorServer) UpdateNotification(context.Context, *UpdateNotificationRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateNotification not implemented")
+}
+func (UnimplementedProjectAmorServer) ListReservations(context.Context, *ListReservationsRequest) (*ListReservationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListReservations not implemented")
 }
 func (UnimplementedProjectAmorServer) mustEmbedUnimplementedProjectAmorServer() {}
 
@@ -643,6 +673,24 @@ func _ProjectAmor_LoginUser_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_ResetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResetPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).ResetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_ResetPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).ResetPassword(ctx, req.(*ResetPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ProjectAmor_ListUtilities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListUtilitiesRequest)
 	if err := dec(in); err != nil {
@@ -772,6 +820,24 @@ func _ProjectAmor_UpdateNotification_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProjectAmor_ListReservations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListReservationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProjectAmorServer).ListReservations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProjectAmor_ListReservations_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProjectAmorServer).ListReservations(ctx, req.(*ListReservationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProjectAmor_ServiceDesc is the grpc.ServiceDesc for ProjectAmor service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -828,6 +894,10 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProjectAmor_LoginUser_Handler,
 		},
 		{
+			MethodName: "ResetPassword",
+			Handler:    _ProjectAmor_ResetPassword_Handler,
+		},
+		{
 			MethodName: "ListUtilities",
 			Handler:    _ProjectAmor_ListUtilities_Handler,
 		},
@@ -850,6 +920,10 @@ var ProjectAmor_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateNotification",
 			Handler:    _ProjectAmor_UpdateNotification_Handler,
+		},
+		{
+			MethodName: "ListReservations",
+			Handler:    _ProjectAmor_ListReservations_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
