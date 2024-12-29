@@ -31,132 +31,132 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
-func request_ProjectAmor_AddHome_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AddHomeRequest
+func request_ProjectAmor_AddAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AddAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.AddHome(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.AddAccommodation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ProjectAmor_AddHome_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq AddHomeRequest
+func local_request_ProjectAmor_AddAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq AddAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.AddHome(ctx, &protoReq)
+	msg, err := server.AddAccommodation(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_ProjectAmor_DeleteHome_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ProjectAmor_DeleteAccommodation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ProjectAmor_DeleteHome_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteHomeRequest
+func request_ProjectAmor_DeleteAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_DeleteHome_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_DeleteAccommodation_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.DeleteHome(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.DeleteAccommodation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ProjectAmor_DeleteHome_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteHomeRequest
+func local_request_ProjectAmor_DeleteAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_DeleteHome_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_DeleteAccommodation_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.DeleteHome(ctx, &protoReq)
+	msg, err := server.DeleteAccommodation(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-func request_ProjectAmor_UpdateHome_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq UpdateHomeRequest
+func request_ProjectAmor_UpdateAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.UpdateHome(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.UpdateAccommodation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ProjectAmor_UpdateHome_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq UpdateHomeRequest
+func local_request_ProjectAmor_UpdateAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.UpdateHome(ctx, &protoReq)
+	msg, err := server.UpdateAccommodation(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
 var (
-	filter_ProjectAmor_GetHome_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ProjectAmor_GetAccommodation_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ProjectAmor_GetHome_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetHomeRequest
+func request_ProjectAmor_GetAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_GetHome_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_GetAccommodation_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetHome(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetAccommodation(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ProjectAmor_GetHome_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetHomeRequest
+func local_request_ProjectAmor_GetAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetAccommodationRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_GetHome_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_GetAccommodation_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.GetHome(ctx, &protoReq)
+	msg, err := server.GetAccommodation(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-func request_ProjectAmor_GetHomeByUser_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetHomeByUserRequest
+func request_ProjectAmor_GetAccommodationByUser_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetAccommodationByUserRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -171,18 +171,18 @@ func request_ProjectAmor_GetHomeByUser_0(ctx context.Context, marshaler runtime.
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
 	}
 
-	protoReq.UserId, err = runtime.Int64(val)
+	protoReq.UserId, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
 
-	msg, err := client.GetHomeByUser(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetAccommodationByUser(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_ProjectAmor_GetHomeByUser_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetHomeByUserRequest
+func local_request_ProjectAmor_GetAccommodationByUser_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetAccommodationByUserRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -197,31 +197,57 @@ func local_request_ProjectAmor_GetHomeByUser_0(ctx context.Context, marshaler ru
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "user_id")
 	}
 
-	protoReq.UserId, err = runtime.Int64(val)
+	protoReq.UserId, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
 
-	msg, err := server.GetHomeByUser(ctx, &protoReq)
+	msg, err := server.GetAccommodationByUser(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-func request_ProjectAmor_ListHome_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (ProjectAmor_ListHomeClient, runtime.ServerMetadata, error) {
-	var protoReq ListHomeRequest
+func request_ProjectAmor_ListAccommodation_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (ProjectAmor_ListAccommodationClient, runtime.ServerMetadata, error) {
 	var metadata runtime.ServerMetadata
-
-	stream, err := client.ListHome(ctx, &protoReq)
+	stream, err := client.ListAccommodation(ctx)
 	if err != nil {
+		grpclog.Infof("Failed to start streaming: %v", err)
 		return nil, metadata, err
 	}
+	dec := marshaler.NewDecoder(req.Body)
+	handleSend := func() error {
+		var protoReq ListAccommodationRequest
+		err := dec.Decode(&protoReq)
+		if err == io.EOF {
+			return err
+		}
+		if err != nil {
+			grpclog.Infof("Failed to decode request: %v", err)
+			return err
+		}
+		if err := stream.Send(&protoReq); err != nil {
+			grpclog.Infof("Failed to send request: %v", err)
+			return err
+		}
+		return nil
+	}
+	go func() {
+		for {
+			if err := handleSend(); err != nil {
+				break
+			}
+		}
+		if err := stream.CloseSend(); err != nil {
+			grpclog.Infof("Failed to terminate client stream: %v", err)
+		}
+	}()
 	header, err := stream.Header()
 	if err != nil {
+		grpclog.Infof("Failed to get header from client: %v", err)
 		return nil, metadata, err
 	}
 	metadata.HeaderMD = header
 	return stream, metadata, nil
-
 }
 
 var (
@@ -316,7 +342,7 @@ func request_ProjectAmor_UpdateRoom_0(ctx context.Context, marshaler runtime.Mar
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
 	}
 
-	protoReq.Id, err = runtime.Int64(val)
+	protoReq.Id, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
 	}
@@ -346,7 +372,7 @@ func local_request_ProjectAmor_UpdateRoom_0(ctx context.Context, marshaler runti
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
 	}
 
-	protoReq.Id, err = runtime.Int64(val)
+	protoReq.Id, err = runtime.String(val)
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
 	}
@@ -604,32 +630,6 @@ func local_request_ProjectAmor_RemoveReserveRoom_0(ctx context.Context, marshale
 
 }
 
-func request_ProjectAmor_CreateNotification_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateNotificationRequest
-	var metadata runtime.ServerMetadata
-
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.CreateNotification(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ProjectAmor_CreateNotification_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq CreateNotificationRequest
-	var metadata runtime.ServerMetadata
-
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.CreateNotification(ctx, &protoReq)
-	return msg, metadata, err
-
-}
-
 var (
 	filter_ProjectAmor_ListNotifications_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
@@ -659,17 +659,99 @@ func request_ProjectAmor_ListNotifications_0(ctx context.Context, marshaler runt
 }
 
 var (
-	filter_ProjectAmor_UpdateNotification_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_ProjectAmor_ListRoomReviews_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_ProjectAmor_UpdateNotification_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq UpdateNotificationRequest
+func request_ProjectAmor_ListRoomReviews_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListRoomReviewsRequest
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_UpdateNotification_0); err != nil {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_ListRoomReviews_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.ListRoomReviews(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_ProjectAmor_ListRoomReviews_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListRoomReviewsRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_ListRoomReviews_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.ListRoomReviews(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
+func request_ProjectAmor_SubscribeNotification_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (ProjectAmor_SubscribeNotificationClient, runtime.ServerMetadata, error) {
+	var protoReq SubscribeNotificationRequest
+	var metadata runtime.ServerMetadata
+
+	stream, err := client.SubscribeNotification(ctx, &protoReq)
+	if err != nil {
+		return nil, metadata, err
+	}
+	header, err := stream.Header()
+	if err != nil {
+		return nil, metadata, err
+	}
+	metadata.HeaderMD = header
+	return stream, metadata, nil
+
+}
+
+var (
+	filter_ProjectAmor_DeleteNotification_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_ProjectAmor_DeleteNotification_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteNotificationRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_DeleteNotification_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.DeleteNotification(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_ProjectAmor_DeleteNotification_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq DeleteNotificationRequest
+	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_DeleteNotification_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.DeleteNotification(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
+func request_ProjectAmor_UpdateNotification_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateNotificationRequest
+	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -682,50 +764,11 @@ func local_request_ProjectAmor_UpdateNotification_0(ctx context.Context, marshal
 	var protoReq UpdateNotificationRequest
 	var metadata runtime.ServerMetadata
 
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_UpdateNotification_0); err != nil {
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := server.UpdateNotification(ctx, &protoReq)
-	return msg, metadata, err
-
-}
-
-var (
-	filter_ProjectAmor_ListReservations_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_ProjectAmor_ListReservations_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAmorClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListReservationsRequest
-	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_ListReservations_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.ListReservations(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_ProjectAmor_ListReservations_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAmorServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListReservationsRequest
-	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_ProjectAmor_ListReservations_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.ListReservations(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -736,7 +779,7 @@ func local_request_ProjectAmor_ListReservations_0(ctx context.Context, marshaler
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterProjectAmorHandlerFromEndpoint instead.
 func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux, server ProjectAmorServer) error {
 
-	mux.Handle("POST", pattern_ProjectAmor_AddHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ProjectAmor_AddAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -744,12 +787,12 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/accommodation:add"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation:add"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ProjectAmor_AddHome_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ProjectAmor_AddAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -757,11 +800,11 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_AddHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_AddAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_ProjectAmor_DeleteHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ProjectAmor_DeleteAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -769,12 +812,12 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/accommodation:delete"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation:delete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ProjectAmor_DeleteHome_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ProjectAmor_DeleteAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -782,11 +825,11 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_DeleteHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_DeleteAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_ProjectAmor_UpdateHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_ProjectAmor_UpdateAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -794,12 +837,12 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/accommodation:update"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation:update"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ProjectAmor_UpdateHome_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ProjectAmor_UpdateAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -807,11 +850,11 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_UpdateHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_UpdateAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_GetHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ProjectAmor_GetAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -819,12 +862,12 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/accommodation"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ProjectAmor_GetHome_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ProjectAmor_GetAccommodation_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -832,11 +875,11 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_GetHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_GetAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_GetHomeByUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ProjectAmor_GetAccommodationByUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -844,12 +887,12 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser", runtime.WithHTTPPathPattern("/v1/accommodation/{user_id}/all:read"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetAccommodationByUser", runtime.WithHTTPPathPattern("/v1/accommodation/{user_id}/all:read"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ProjectAmor_GetHomeByUser_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ProjectAmor_GetAccommodationByUser_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -857,11 +900,11 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_GetHomeByUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_GetAccommodationByUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_ListHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ProjectAmor_ListAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
 		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
@@ -1151,7 +1194,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/reserve:delete"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/reserve"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1168,7 +1211,14 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("POST", pattern_ProjectAmor_CreateNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ProjectAmor_ListNotifications_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
+		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+		return
+	})
+
+	mux.Handle("GET", pattern_ProjectAmor_ListRoomReviews_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -1176,12 +1226,12 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/CreateNotification", runtime.WithHTTPPathPattern("/v1/notification"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListRoomReviews", runtime.WithHTTPPathPattern("/v1/room/reviews"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_ProjectAmor_CreateNotification_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_ProjectAmor_ListRoomReviews_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -1189,15 +1239,40 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			return
 		}
 
-		forward_ProjectAmor_CreateNotification_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_ListRoomReviews_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_ListNotifications_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ProjectAmor_SubscribeNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		err := status.Error(codes.Unimplemented, "streaming calls are not yet supported in the in-process transport")
 		_, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 		return
+	})
+
+	mux.Handle("DELETE", pattern_ProjectAmor_DeleteNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteNotification", runtime.WithHTTPPathPattern("/v1/notification"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_ProjectAmor_DeleteNotification_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ProjectAmor_DeleteNotification_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
 	})
 
 	mux.Handle("PUT", pattern_ProjectAmor_UpdateNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
@@ -1208,7 +1283,7 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateNotification", runtime.WithHTTPPathPattern("/v1/notification:update"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateNotification", runtime.WithHTTPPathPattern("/v1/notification"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1222,31 +1297,6 @@ func RegisterProjectAmorHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		}
 
 		forward_ProjectAmor_UpdateNotification_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("GET", pattern_ProjectAmor_ListReservations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		var err error
-		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListReservations", runtime.WithHTTPPathPattern("/v1/reservations"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_ProjectAmor_ListReservations_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ProjectAmor_ListReservations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1291,135 +1341,135 @@ func RegisterProjectAmorHandler(ctx context.Context, mux *runtime.ServeMux, conn
 // "ProjectAmorClient" to call the correct interceptors.
 func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux, client ProjectAmorClient) error {
 
-	mux.Handle("POST", pattern_ProjectAmor_AddHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ProjectAmor_AddAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddHome", runtime.WithHTTPPathPattern("/v1/accommodation:add"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/AddAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation:add"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ProjectAmor_AddHome_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ProjectAmor_AddAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ProjectAmor_AddHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_AddAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("DELETE", pattern_ProjectAmor_DeleteHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("DELETE", pattern_ProjectAmor_DeleteAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteHome", runtime.WithHTTPPathPattern("/v1/accommodation:delete"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation:delete"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ProjectAmor_DeleteHome_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ProjectAmor_DeleteAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ProjectAmor_DeleteHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_DeleteAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("PUT", pattern_ProjectAmor_UpdateHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PUT", pattern_ProjectAmor_UpdateAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateHome", runtime.WithHTTPPathPattern("/v1/accommodation:update"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation:update"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ProjectAmor_UpdateHome_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ProjectAmor_UpdateAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ProjectAmor_UpdateHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_UpdateAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_GetHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ProjectAmor_GetAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHome", runtime.WithHTTPPathPattern("/v1/accommodation"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetAccommodation", runtime.WithHTTPPathPattern("/v1/accommodation"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ProjectAmor_GetHome_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ProjectAmor_GetAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ProjectAmor_GetHome_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_GetAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_GetHomeByUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_ProjectAmor_GetAccommodationByUser_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetHomeByUser", runtime.WithHTTPPathPattern("/v1/accommodation/{user_id}/all:read"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/GetAccommodationByUser", runtime.WithHTTPPathPattern("/v1/accommodation/{user_id}/all:read"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ProjectAmor_GetHomeByUser_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ProjectAmor_GetAccommodationByUser_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ProjectAmor_GetHomeByUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_GetAccommodationByUser_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_ListHome_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_ProjectAmor_ListAccommodation_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListHome", runtime.WithHTTPPathPattern("/v1/accommodations"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListAccommodation", runtime.WithHTTPPathPattern("/v1/accommodations"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_ProjectAmor_ListHome_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_ProjectAmor_ListAccommodation_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_ProjectAmor_ListHome_0(annotatedContext, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
+		forward_ProjectAmor_ListAccommodation_0(annotatedContext, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1671,7 +1721,7 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/reserve:delete"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/RemoveReserveRoom", runtime.WithHTTPPathPattern("/v1/accommodation/room/reserve"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1684,28 +1734,6 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 
 		forward_ProjectAmor_RemoveReserveRoom_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("POST", pattern_ProjectAmor_CreateNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		var err error
-		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/CreateNotification", runtime.WithHTTPPathPattern("/v1/notification"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ProjectAmor_CreateNotification_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ProjectAmor_CreateNotification_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -1731,13 +1759,79 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
+	mux.Handle("GET", pattern_ProjectAmor_ListRoomReviews_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListRoomReviews", runtime.WithHTTPPathPattern("/v1/room/reviews"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ProjectAmor_ListRoomReviews_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ProjectAmor_ListRoomReviews_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_ProjectAmor_SubscribeNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/SubscribeNotification", runtime.WithHTTPPathPattern("/v1/notifications"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ProjectAmor_SubscribeNotification_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ProjectAmor_SubscribeNotification_0(annotatedContext, mux, outboundMarshaler, w, req, func() (proto.Message, error) { return resp.Recv() }, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("DELETE", pattern_ProjectAmor_DeleteNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/DeleteNotification", runtime.WithHTTPPathPattern("/v1/notification"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ProjectAmor_DeleteNotification_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ProjectAmor_DeleteNotification_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("PUT", pattern_ProjectAmor_UpdateNotification_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateNotification", runtime.WithHTTPPathPattern("/v1/notification:update"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/UpdateNotification", runtime.WithHTTPPathPattern("/v1/notification"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -1753,43 +1847,21 @@ func RegisterProjectAmorHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("GET", pattern_ProjectAmor_ListReservations_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		var err error
-		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/projectamor_api.amor.v1.ProjectAmor/ListReservations", runtime.WithHTTPPathPattern("/v1/reservations"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_ProjectAmor_ListReservations_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_ProjectAmor_ListReservations_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	return nil
 }
 
 var (
-	pattern_ProjectAmor_AddHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, "add"))
+	pattern_ProjectAmor_AddAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, "add"))
 
-	pattern_ProjectAmor_DeleteHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, "delete"))
+	pattern_ProjectAmor_DeleteAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, "delete"))
 
-	pattern_ProjectAmor_UpdateHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, "update"))
+	pattern_ProjectAmor_UpdateAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, "update"))
 
-	pattern_ProjectAmor_GetHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, ""))
+	pattern_ProjectAmor_GetAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodation"}, ""))
 
-	pattern_ProjectAmor_GetHomeByUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "accommodation", "user_id", "all"}, "read"))
+	pattern_ProjectAmor_GetAccommodationByUser_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2, 2, 3}, []string{"v1", "accommodation", "user_id", "all"}, "read"))
 
-	pattern_ProjectAmor_ListHome_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodations"}, ""))
+	pattern_ProjectAmor_ListAccommodation_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "accommodations"}, ""))
 
 	pattern_ProjectAmor_GetRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "accommodation", "room"}, "get"))
 
@@ -1813,29 +1885,31 @@ var (
 
 	pattern_ProjectAmor_ReserveRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v1", "accommodation", "room", "reserve"}, ""))
 
-	pattern_ProjectAmor_RemoveReserveRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v1", "accommodation", "room", "reserve"}, "delete"))
-
-	pattern_ProjectAmor_CreateNotification_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "notification"}, ""))
+	pattern_ProjectAmor_RemoveReserveRoom_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"v1", "accommodation", "room", "reserve"}, ""))
 
 	pattern_ProjectAmor_ListNotifications_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "notification"}, "all"))
 
-	pattern_ProjectAmor_UpdateNotification_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "notification"}, "update"))
+	pattern_ProjectAmor_ListRoomReviews_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "room", "reviews"}, ""))
 
-	pattern_ProjectAmor_ListReservations_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "reservations"}, ""))
+	pattern_ProjectAmor_SubscribeNotification_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "notifications"}, ""))
+
+	pattern_ProjectAmor_DeleteNotification_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "notification"}, ""))
+
+	pattern_ProjectAmor_UpdateNotification_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "notification"}, ""))
 )
 
 var (
-	forward_ProjectAmor_AddHome_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_AddAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_DeleteHome_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_DeleteAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_UpdateHome_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_UpdateAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_GetHome_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_GetAccommodation_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_GetHomeByUser_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_GetAccommodationByUser_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_ListHome_0 = runtime.ForwardResponseStream
+	forward_ProjectAmor_ListAccommodation_0 = runtime.ForwardResponseStream
 
 	forward_ProjectAmor_GetRoom_0 = runtime.ForwardResponseMessage
 
@@ -1861,11 +1935,13 @@ var (
 
 	forward_ProjectAmor_RemoveReserveRoom_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_CreateNotification_0 = runtime.ForwardResponseMessage
-
 	forward_ProjectAmor_ListNotifications_0 = runtime.ForwardResponseStream
 
-	forward_ProjectAmor_UpdateNotification_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_ListRoomReviews_0 = runtime.ForwardResponseMessage
 
-	forward_ProjectAmor_ListReservations_0 = runtime.ForwardResponseMessage
+	forward_ProjectAmor_SubscribeNotification_0 = runtime.ForwardResponseStream
+
+	forward_ProjectAmor_DeleteNotification_0 = runtime.ForwardResponseMessage
+
+	forward_ProjectAmor_UpdateNotification_0 = runtime.ForwardResponseMessage
 )
